@@ -55,8 +55,16 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\WCFService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Device\UtDevicePlc.cs" />
     <Compile Include="GenCfg\Manifest\EnumMachineId.cs" />
     <Compile Include="GenCfg\Manifest\ManifestBase.cs" />
@@ -85,6 +93,35 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\WCFService\MvAssistantWCFService.wsdl" />
+    <None Include="Connected Services\WCFService\WCFService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFService\WCFService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFService\WCFService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFService\WCFService21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFService\WCFService22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFService\WCFService23.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFService\WCFService24.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFService\WCFService25.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFService\WCFService26.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="GenCfg\Manifest\Manifest.xml.real">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -100,7 +137,24 @@
       <Name>MvAssistant</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WCFService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WCFService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WCFService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WCFService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
