@@ -9,7 +9,70 @@
 //------------------------------------------------------------------------------
 
 namespace MvAssistant.WCFService.TestFrm.WCFService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/MvAssistant.WCFService")]
+    [System.SerializableAttribute()]
+    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool BoolValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StringValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool BoolValue {
+            get {
+                return this.BoolValueField;
+            }
+            set {
+                if ((this.BoolValueField.Equals(value) != true)) {
+                    this.BoolValueField = value;
+                    this.RaisePropertyChanged("BoolValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StringValue {
+            get {
+                return this.StringValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
+                    this.StringValueField = value;
+                    this.RaisePropertyChanged("StringValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCFService.IMvAssistantWCFService")]
@@ -21,11 +84,23 @@ namespace MvAssistant.WCFService.TestFrm.WCFService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMvAssistantWCFService/GetData", ReplyAction="http://tempuri.org/IMvAssistantWCFService/GetDataResponse")]
         System.Threading.Tasks.Task<string> GetDataAsync(string value);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMvAssistantWCFService/UtHalMaskTransfer_TestPathMove", ReplyAction="http://tempuri.org/IMvAssistantWCFService/UtHalMaskTransfer_TestPathMoveResponse")]
-        int UtHalMaskTransfer_TestPathMove();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMvAssistantWCFService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IMvAssistantWCFService/GetDataUsingDataContractResponse")]
+        MvAssistant.WCFService.TestFrm.WCFService.CompositeType GetDataUsingDataContract(MvAssistant.WCFService.TestFrm.WCFService.CompositeType composite);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMvAssistantWCFService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IMvAssistantWCFService/GetDataUsingDataContractResponse")]
+        System.Threading.Tasks.Task<MvAssistant.WCFService.TestFrm.WCFService.CompositeType> GetDataUsingDataContractAsync(MvAssistant.WCFService.TestFrm.WCFService.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMvAssistantWCFService/UtHalMaskTransfer_TestPathMove", ReplyAction="http://tempuri.org/IMvAssistantWCFService/UtHalMaskTransfer_TestPathMoveResponse")]
-        System.Threading.Tasks.Task<int> UtHalMaskTransfer_TestPathMoveAsync();
+        string UtHalMaskTransfer_TestPathMove();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMvAssistantWCFService/UtHalMaskTransfer_TestPathMove", ReplyAction="http://tempuri.org/IMvAssistantWCFService/UtHalMaskTransfer_TestPathMoveResponse")]
+        System.Threading.Tasks.Task<string> UtHalMaskTransfer_TestPathMoveAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMvAssistantWCFService/MaskRobot_Connect", ReplyAction="http://tempuri.org/IMvAssistantWCFService/MaskRobot_ConnectResponse")]
+        string MaskRobot_Connect(string requestJson);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMvAssistantWCFService/MaskRobot_Connect", ReplyAction="http://tempuri.org/IMvAssistantWCFService/MaskRobot_ConnectResponse")]
+        System.Threading.Tasks.Task<string> MaskRobot_ConnectAsync(string requestJson);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,12 +138,28 @@ namespace MvAssistant.WCFService.TestFrm.WCFService {
             return base.Channel.GetDataAsync(value);
         }
         
-        public int UtHalMaskTransfer_TestPathMove() {
+        public MvAssistant.WCFService.TestFrm.WCFService.CompositeType GetDataUsingDataContract(MvAssistant.WCFService.TestFrm.WCFService.CompositeType composite) {
+            return base.Channel.GetDataUsingDataContract(composite);
+        }
+        
+        public System.Threading.Tasks.Task<MvAssistant.WCFService.TestFrm.WCFService.CompositeType> GetDataUsingDataContractAsync(MvAssistant.WCFService.TestFrm.WCFService.CompositeType composite) {
+            return base.Channel.GetDataUsingDataContractAsync(composite);
+        }
+        
+        public string UtHalMaskTransfer_TestPathMove() {
             return base.Channel.UtHalMaskTransfer_TestPathMove();
         }
         
-        public System.Threading.Tasks.Task<int> UtHalMaskTransfer_TestPathMoveAsync() {
+        public System.Threading.Tasks.Task<string> UtHalMaskTransfer_TestPathMoveAsync() {
             return base.Channel.UtHalMaskTransfer_TestPathMoveAsync();
+        }
+        
+        public string MaskRobot_Connect(string requestJson) {
+            return base.Channel.MaskRobot_Connect(requestJson);
+        }
+        
+        public System.Threading.Tasks.Task<string> MaskRobot_ConnectAsync(string requestJson) {
+            return base.Channel.MaskRobot_ConnectAsync(requestJson);
         }
     }
 }

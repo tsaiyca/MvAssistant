@@ -13,11 +13,12 @@
     <AssemblyName>MvAssistant.WCFService</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <XsdCodeGenEnabled>True</XsdCodeGenEnabled>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,9 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.1.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -74,7 +78,20 @@
       <Project>{1c5a74ce-c1b7-44b6-b09f-59f36c442506}</Project>
       <Name>MvAssistant.Mac.v1_0</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MvAssistant.OperateLogic\MvAssistant.OperateLogic.csproj">
+      <Project>{55af9d6c-2e02-488b-803d-3d1aa640a9d5}</Project>
+      <Name>MvAssistant.OperateLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvAssistant.OperateModel\MvAssistant.OperateModel.csproj">
+      <Project>{1957D88D-A19A-4AC2-9B44-DE461B8DADEB}</Project>
+      <Name>MvAssistant.OperateModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvAssistant\MvAssistant.csproj">
+      <Project>{1f694fa5-2647-4a70-a97d-4e443d5b79ee}</Project>
+      <Name>MvAssistant</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

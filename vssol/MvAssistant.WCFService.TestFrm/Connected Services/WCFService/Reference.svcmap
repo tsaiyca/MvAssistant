@@ -23,6 +23,7 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="MvAssistantWCFService.wsdl" MetadataType="Wsdl" ID="aa934902-17eb-497a-8dda-ed7898e1f8b0" SourceId="1" SourceUrl="http://127.0.0.1:8002/WCFService" />
+    <MetadataFile FileName="WCFService.xsd" MetadataType="Schema" ID="74952e12-7169-4af4-bc31-cbec08c309d8" SourceId="1" SourceUrl="http://127.0.0.1:8002/WCFService?xsd=xsd2" />
     <MetadataFile FileName="WCFService1.xsd" MetadataType="Schema" ID="a2c524c0-9418-486c-8d59-028ab8e04324" SourceId="1" SourceUrl="http://127.0.0.1:8002/WCFService?xsd=xsd0" />
     <MetadataFile FileName="WCFService2.xsd" MetadataType="Schema" ID="9c20b55b-1401-4aa1-8bb5-0de6535ea2df" SourceId="1" SourceUrl="http://127.0.0.1:8002/WCFService?xsd=xsd1" />
   </Metadata>

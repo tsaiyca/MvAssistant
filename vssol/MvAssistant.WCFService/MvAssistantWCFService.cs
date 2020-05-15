@@ -7,17 +7,26 @@ using System.Text;
 using MvAssistant.Mac.v1_0.Hal;
 using MvAssistant.Mac.v1_0.Hal.Assembly;
 using MvAssistant.Mac.v1_0.Manifest;
+using MvAssistant.OperateLogic;
+using MvAssistant.OperateModel.TransferModel.RequestModel.MaskRobot;
+using MvAssistant.OperateModel.TransferModel.ResponseModel;
+using MvAssistant.OperateModel.TransferModel.ResponseModel.MaskRobot;
+//using MvAssistant.WCFService.BusinessLogic;
+//using MvAssistantTransferModel.TransferModel.RequestModel.MaskRobot;
+//using MvAssistantTransferModel.TransferModel.ResponseModel;
+//using MvAssistantTransferModel.TransferModel.ResponseModel.MaskRobot;
 
 namespace MvAssistant.WCFService
 {
     // 注意: 您可以使用 [重構] 功能表上的 [重新命名] 命令同時變更程式碼和組態檔中的類別名稱 "Service1"。
     public class MvAssistantWCFService : IMvAssistantWCFService
     {
+        #region Example
         public string GetData(string value)
         {
             return string.Format("You entered: {0}", value);
         }
-        /*
+       
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
             if (composite == null)
@@ -30,10 +39,39 @@ namespace MvAssistant.WCFService
             }
             return composite;
         }
-*/
+        #endregion
 
-        public int UtHalMaskTransfer_TestPathMove()
+        public string MaskRobot_Connect(string requestJson)
         {
+            var rtnJson = default(string);
+            var responseModel = default(MaskRobot_Connect_ResponseModel);
+            try
+            {
+             //   var requestModel = Newtonsoft.Json.JsonConvert.DeserializeObject<MaskRobot_Connect_RequestModel>(requestJson);
+                var feedBack = new MaskRobotOperateLogic().Connect<MaskRobot_Connect_RequestModel>(requestJson);
+                responseModel = new MaskRobot_Connect_ResponseModel
+                {
+                    Message = "Connection Success",
+                    ResponseResult=feedBack
+                };
+            }
+            catch(Exception ex)
+            {
+                responseModel = new MaskRobot_Connect_ResponseModel
+                {
+                    Message = ex.Message,
+                    ResponseResult = ResponseResultType.ExceptionOccurred,
+                };
+            }
+            rtnJson= responseModel.ToJson();
+            return rtnJson;
+        }
+
+
+        public string UtHalMaskTransfer_TestPathMove()
+        {
+            string rtnJson= default(string);
+            var respModel = default(MaskRobot_Connect_ResponseModel);
             try
             {
                 using (var halContext = new MacHalContext("GenCfg/Manifest/Manifest.xml.real"))
@@ -63,12 +101,22 @@ namespace MvAssistant.WCFService
                     //mt.Robot.HalMoveAsyn();
                     //mt.HalMoveAsyn();
                     mt.Clamp();
-
+                    respModel = new MaskRobot_Connect_ResponseModel
+                    {
+                        ResponseResult = ResponseResultType.OK,
+                    };
                 }
             }
-            catch (Exception ex) { throw ex; }
-
-            return 0;
+            catch (Exception ex)
+            {
+                respModel = new MaskRobot_Connect_ResponseModel
+                {
+                    Message = ex.Message,
+                    ResponseResult = ResponseResultType.ExceptionOccurred,
+                };
+            }
+            rtnJson = respModel.ToJson();
+            return rtnJson;
         }
     }
 }

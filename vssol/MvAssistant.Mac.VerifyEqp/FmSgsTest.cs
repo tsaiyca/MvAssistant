@@ -16,5 +16,10 @@ namespace BoxTransferTest
         {
             InitializeComponent();
         }
+
+        private void FmSgsTest_Load(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

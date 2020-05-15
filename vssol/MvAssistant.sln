@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvAssistant.WCFService.Host
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvAssistant.WCFService.TestFrm", "MvAssistant.WCFService.TestFrm\MvAssistant.WCFService.TestFrm.csproj", "{39A28530-AB3E-4F45-BA11-5E836963BABC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvAssistant.OperateLogic", "MvAssistant.OperateLogic\MvAssistant.OperateLogic.csproj", "{55AF9D6C-2E02-488B-803D-3D1AA640A9D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvAssistant.OperateModel", "MvAssistant.OperateModel\MvAssistant.OperateModel.csproj", "{1957D88D-A19A-4AC2-9B44-DE461B8DADEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +95,22 @@ Global
 		{39A28530-AB3E-4F45-BA11-5E836963BABC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{39A28530-AB3E-4F45-BA11-5E836963BABC}.Release|x86.ActiveCfg = Release|Any CPU
 		{39A28530-AB3E-4F45-BA11-5E836963BABC}.Release|x86.Build.0 = Release|Any CPU
+		{55AF9D6C-2E02-488B-803D-3D1AA640A9D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55AF9D6C-2E02-488B-803D-3D1AA640A9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55AF9D6C-2E02-488B-803D-3D1AA640A9D5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{55AF9D6C-2E02-488B-803D-3D1AA640A9D5}.Debug|x86.Build.0 = Debug|Any CPU
+		{55AF9D6C-2E02-488B-803D-3D1AA640A9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55AF9D6C-2E02-488B-803D-3D1AA640A9D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55AF9D6C-2E02-488B-803D-3D1AA640A9D5}.Release|x86.ActiveCfg = Release|Any CPU
+		{55AF9D6C-2E02-488B-803D-3D1AA640A9D5}.Release|x86.Build.0 = Release|Any CPU
+		{1957D88D-A19A-4AC2-9B44-DE461B8DADEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1957D88D-A19A-4AC2-9B44-DE461B8DADEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1957D88D-A19A-4AC2-9B44-DE461B8DADEB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1957D88D-A19A-4AC2-9B44-DE461B8DADEB}.Debug|x86.Build.0 = Debug|Any CPU
+		{1957D88D-A19A-4AC2-9B44-DE461B8DADEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1957D88D-A19A-4AC2-9B44-DE461B8DADEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1957D88D-A19A-4AC2-9B44-DE461B8DADEB}.Release|x86.ActiveCfg = Release|Any CPU
+		{1957D88D-A19A-4AC2-9B44-DE461B8DADEB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

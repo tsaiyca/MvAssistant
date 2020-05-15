@@ -10,7 +10,16 @@ using System.Windows.Forms;
 using MaskTool.TestMy.Device;
 using MvAssistant.Tasking;
 using MvAssistant.Mac.v1_0.Hal.CompRobotTest;
+using System.Web.Services;
+using MvAssistant.Mac.VerifyEqp;
+using MvAssistant.OperateModel.TransferModel.RequestModel.MaskRobot;
+using MvAssistant.OperateModel.TransferModel.ResponseModel.MaskRobot;
+//using MvAssistantTransferModel.ResponseModel.MaskRobot;
+//using MvAssistantTransferModel.ResponseModel.MaskRobot;
+//using MvAssistantTransferModel.RequestModel.MaskRobot;
 
+//using MvAssistant.WCFService.TransferModel.RequestModel.MaskRobot;
+//using MvAssistantTransferModel.TransferModel.RequestModel.MaskRobot;
 namespace BoxTransferTest.ViewUc
 {
     public partial class UcMaskRobot : UserControl
@@ -32,6 +41,22 @@ namespace BoxTransferTest.ViewUc
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            MaskCleanerVerify.WCFService.MvAssistantWCFServiceClient service = new MaskCleanerVerify.WCFService.MvAssistantWCFServiceClient();
+            try {
+               var requestModel = new MaskRobot_Connect_RequestModel
+                {
+                    RobotIP = "192.168.0.50",
+                };
+               
+                var feedBackJson=service.MaskRobot_Connect(requestModel.ToJson());
+                var responseModel = Newtonsoft.Json.JsonConvert.DeserializeObject<MaskRobot_Connect_ResponseModel>(feedBackJson);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
+            /*
             robotHandler = new MacHalMaskRobotFanuc();
             robotHandler.ldd.RobotIp = "192.168.0.50";
             if (robotHandler.ConnectIfNO() == 0)
@@ -44,7 +69,7 @@ namespace BoxTransferTest.ViewUc
                 this.robotHandler.Close();
                 return;
             }
-
+            */
             //var currPos = robotHandler.getCurrentPOS();
 
 
