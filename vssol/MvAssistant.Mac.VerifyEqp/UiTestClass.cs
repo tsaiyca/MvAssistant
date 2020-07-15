@@ -434,9 +434,11 @@ namespace MvAssistantMacVerifyEqp
     }
     public class TestLoadPorts
     {
+        public static bool Loport1CycleRunFlag = false;
+        public static  bool Loport2CycleRunFlag = false;
         private FrmTestUI MyForm = null;
         public  MvGudengLoadPortLdd LoadPort1 = null;
-       public MvGudengLoadPortLdd LoadPort2 = null;
+        public MvGudengLoadPortLdd LoadPort2 = null;
         MvGudengLoadPortCollection ldd = new MvGudengLoadPortCollection();
         string LoadPortAIP = "192.168.0.20";
         int LoadPportAPort = 1024;
@@ -634,6 +636,19 @@ namespace MvAssistantMacVerifyEqp
             var loadport = (MvGudengLoadPortLdd)sender;
             SetResult(loadport, "DockPODComplete_HasReticle []");
             this.EnableLoadportOperate(loadport);
+          
+            if (loadport.LoadPortNo == 1 && TestLoadPorts.Loport1CycleRunFlag == true)
+            {
+                var timeSlipt = (int)MyForm.numLoadPortASliptSec.Value;
+                System.Threading.Thread.Sleep(timeSlipt);
+                MyForm.btnLoadPortAUnDock_Click(MyForm.btnLoadPortAUnDock, EventArgs.Empty);
+            }
+            if (LoadPort2.LoadPortNo == 2 && Loport2CycleRunFlag == true)
+            {
+                var timeSlipt = (int)MyForm.numLoadPortBSliptSec.Value;
+                System.Threading.Thread.Sleep(timeSlipt);
+                MyForm.btnLoadPortBUnDock_Click(MyForm.btnLoadPortAUnDock, EventArgs.Empty);
+            }
             // NoteEventResult($"IP={loadport.ServerEndPoint}, Event={nameof(OnDockPODComplete_HasReticle).Replace("On", "")}");
         }
         private void OnDockPODComplete_Empty(object sender, EventArgs args)
@@ -641,6 +656,19 @@ namespace MvAssistantMacVerifyEqp
             var loadport = (MvGudengLoadPortLdd)sender;
             SetResult(loadport, "DockPODComplete_Empty []");
             this.EnableLoadportOperate(loadport);
+          
+            if (loadport.LoadPortNo==1 && TestLoadPorts.Loport1CycleRunFlag == true)
+            {
+                var timeSlipt = (int)MyForm.numLoadPortASliptSec.Value;
+                System.Threading.Thread.Sleep(timeSlipt);
+                MyForm.btnLoadPortAUnDock_Click(MyForm.btnLoadPortAUnDock, EventArgs.Empty);
+            }
+            if (LoadPort2.LoadPortNo==2 && TestLoadPorts.Loport2CycleRunFlag == true)
+            {
+                var timeSlipt = (int)MyForm.numLoadPortBSliptSec.Value;
+                System.Threading.Thread.Sleep(timeSlipt);
+                MyForm.btnLoadPortBUnDock_Click(MyForm.btnLoadPortBUnDock, EventArgs.Empty);
+            }
             // NoteEventResult($"IP={loadport.ServerEndPoint}, Event={nameof(OnDockPODComplete_Empty).Replace("On", "")}");
         }
 
@@ -649,6 +677,40 @@ namespace MvAssistantMacVerifyEqp
             var loadport = (MvGudengLoadPortLdd)sender;
             SetResult(loadport, "UndockComplete []");
             this.EnableLoadportOperate(loadport);
+            System.Threading.Thread.Sleep(1000);
+
+          
+            if (loadport.LoadPortNo == 1 && TestLoadPorts.Loport1CycleRunFlag == true )
+            {
+                var times = Convert.ToInt32(MyForm.txtBxLoadPortACurrentCycle.Text);
+                var targetTimes = MyForm.numLoadPortATargetCycles.Value;
+                if (times >= targetTimes)
+                {
+                    SetResult(loadport, "Cycle Run []    Complete----------");
+                }
+                else
+                {
+                    var timeSlipt = (int)MyForm.numLoadPortASliptSec.Value;
+                    MyForm.btnLoadPortADock_Click(MyForm.btnLoadPortADock, EventArgs.Empty);
+                }
+            }
+            if (LoadPort2.LoadPortNo == 2 && TestLoadPorts.Loport2CycleRunFlag == true)
+            {
+
+                var times = Convert.ToInt32(MyForm.txtBxLoadPortBCurrentCycle.Text);
+                var targetTimes = MyForm.numLoadPortBTargetCycles.Value;
+                if (times >= targetTimes)
+                {
+                    SetResult(loadport, "Cycle Run []    Complete----------");
+                }
+                else
+                {
+                    var timeSlipt =(int) MyForm.numLoadPortBSliptSec.Value;
+                    System.Threading.Thread.Sleep(timeSlipt * 1000);
+                    MyForm.btnLoadPortADock_Click(MyForm.btnLoadPortADock, EventArgs.Empty);
+                }
+               // MyForm.btnLoadPortBDock_Click(MyForm.btnLoadPortBDock, EventArgs.Empty);
+            }
             //NoteEventResult($"IP={loadport.ServerEndPoint}, Event={nameof(OnUndockComplete).Replace("On", "")}");
         }
 

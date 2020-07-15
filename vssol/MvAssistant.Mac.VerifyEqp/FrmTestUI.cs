@@ -552,30 +552,80 @@ namespace MvAssistantMacVerifyEqp
             this.btnMoveDrawerDIn_Click(null, null);
         }
 
-        private void btnLoadPortADock_Click(object sender, EventArgs e)
+        public void btnLoadPortADock_Click(object sender, EventArgs e)
         {
-            this.loadPorts.ResetResult(loadPorts.LoadPort1);
+           
             this.loadPorts.DisableLoadportOperate(loadPorts.LoadPort1);
+            if (TestLoadPorts.Loport1CycleRunFlag)
+            {
+                var times = Convert.ToInt32(txtBxLoadPortACurrentCycle.Text);
+                times++;
+                txtBxLoadPortACurrentCycle.Text = times.ToString();
+                txtBxLoportAResult.Text = txtBxLoportAResult.Text + $"\r\nCycles: {times}............\r\n[DOCK]";
+            }
+            else
+            {
+                this.loadPorts.ResetResult(loadPorts.LoadPort1);
+            }
             loadPorts.LoadPort1.CommandDockRequest();
         }
 
-        private void btnLoadPortAUnDock_Click(object sender, EventArgs e)
+        public void btnLoadPortAUnDock_Click(object sender, EventArgs e)
         {
-            this.loadPorts.ResetResult(loadPorts.LoadPort1);
+            if (TestLoadPorts.Loport1CycleRunFlag)
+            {
+                txtBxLoportAResult.Text = txtBxLoportAResult.Text + "\r\n[UN DOCK]";
+            }
+            else
+            {
+                this.loadPorts.ResetResult(loadPorts.LoadPort1);
+            }
             this.loadPorts.DisableLoadportOperate(loadPorts.LoadPort1);
             loadPorts.LoadPort1.CommandUndockRequest();
         }
 
-        private void btnLoadPortBDock_Click(object sender, EventArgs e)
+        public void btnLoadPortBDock_Click(object sender, EventArgs e)
         {
-            this.loadPorts.ResetResult(loadPorts.LoadPort2);
+          
             this.loadPorts.DisableLoadportOperate(loadPorts.LoadPort2);
+
+            if (TestLoadPorts.Loport2CycleRunFlag)
+            {
+                var times = Convert.ToInt32(txtBxLoadPortBCurrentCycle.Text);
+                times++;
+                txtBxLoadPortBCurrentCycle.Text = times.ToString();
+                txtBxLoportBResult.Text = txtBxLoportBResult.Text + $"\r\nCycle: {times}............\r\n[DOCK]";
+            }
+            else
+            {
+                this.loadPorts.ResetResult(loadPorts.LoadPort2);
+            }
             loadPorts.LoadPort2.CommandDockRequest();
+            /**
+            this.loadPorts.ResetResult(loadPorts.LoadPort1);
+            this.loadPorts.DisableLoadportOperate(loadPorts.LoadPort1);
+            if (TestLoadPorts.Loport1CycleRunFlag)
+            {
+                var times = Convert.ToInt32(txtBxLoadPortACurrentCycle.Text);
+                times++;
+                txtBxLoadPortACurrentCycle.Text = times.ToString();
+                txtBxLoportAResult.Text = txtBxLoportAResult.Text + $"\r\nCycle: {times}, Dock";
+            }
+            loadPorts.LoadPort1.CommandDockRequest();
+            */
         }
 
-        private void btnLoadPortBUnDock_Click(object sender, EventArgs e)
+        public void btnLoadPortBUnDock_Click(object sender, EventArgs e)
         {
-            this.loadPorts.ResetResult(loadPorts.LoadPort2);
+            
+            if(TestLoadPorts.Loport2CycleRunFlag)
+            {
+                txtBxLoportBResult.Text = txtBxLoportBResult.Text + "\r\n[UN DOCK]";
+            }
+            else
+            {
+                this.loadPorts.ResetResult(loadPorts.LoadPort2);
+            }
             this.loadPorts.DisableLoadportOperate(loadPorts.LoadPort2);
             loadPorts.LoadPort2.CommandUndockRequest();
         }
@@ -688,6 +738,30 @@ namespace MvAssistantMacVerifyEqp
             this.btnTurnOffDrawerBAllLeds_Click(null, null);
             this.btnTurnOffDrawerCAllLeds_Click(null, null);
             this.btnTurnOffDrawerDAllLeds_Click(null, null);
+        }
+
+        private void btnLoadPortACycleStart_Click(object sender, EventArgs e)
+        {
+            this.loadPorts.ResetResult(loadPorts.LoadPort1);
+            TestLoadPorts.Loport1CycleRunFlag = true;
+            btnLoadPortADock_Click(btnLoadPortADock, EventArgs.Empty);
+        }
+
+        private void btnLoadPortACycleStop_Click(object sender, EventArgs e)
+        {
+            TestLoadPorts.Loport1CycleRunFlag = false;
+        }
+
+        private void btnLoadPortBCycleStart_Click(object sender, EventArgs e)
+        {
+            this.loadPorts.ResetResult(loadPorts.LoadPort2);
+            TestLoadPorts.Loport2CycleRunFlag = true;
+            btnLoadPortBDock_Click(btnLoadPortBDock, EventArgs.Empty);
+        }
+
+        private void btnLoadPortBCycleStop_Click(object sender, EventArgs e)
+        {
+            TestLoadPorts.Loport2CycleRunFlag = false;
         }
     }
 
