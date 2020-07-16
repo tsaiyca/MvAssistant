@@ -176,49 +176,6 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
     /// <summary>監聽 Server 的Method</summary>
     private void ListenFromServer()
         {
-
-
-            ClientSocket.Poll(0, SelectMode.SelectRead);
-            byte[] testRecByte = new byte[1];
-            while (ClientSocket.Connected)
-            {
-                if (ClientSocket.Available == 0)
-                {
-                    int i; 
-                    //使用Peek，測試client是否還有連線
-                    if ((i=ClientSocket.Receive(testRecByte, SocketFlags.Peek)) == 0)
-                    {
-                        break;
-                    }
-                    string rtn = Encoding.Default.GetString(testRecByte, 0, i);
-                    Debug.WriteLine("[RETURN] " + rtn + ", LoadPortNo=" + LoadPortNo);
-                    rtn = rtn.Replace("\0", "");
-                    if (string.IsNullOrEmpty(rtn.Trim()))
-                    {
-                        var s = 0;
-                        s = 1;
-                        Debug.WriteLine("Rtn=EMPTY, LoadPortNo=" + LoadPortNo);
-                    }
-                    if (OnReceviceRtnFromServerHandler != null)
-                    {
-                        // 可能一次會有多個結果
-                        var rtnAry = rtn.Split(new string[] { BaseHostToLoadPortCommand.CommandPostfixText }, StringSplitOptions.RemoveEmptyEntries);
-                        foreach (var element in rtnAry)
-                        {
-                            var eventArgs = new OnReceviceRtnFromServerEventArgs(element);
-                            OnReceviceRtnFromServerHandler.Invoke(this, eventArgs);
-                        }
-                    }
-                    
-                    Thread.Sleep(20);
-                    continue;
-                }
-                else
-                {
-                    var S = 100;
-                }
-            }
-            /**
             while (true)
             {
                 try
@@ -253,7 +210,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
                 {
                     Debug.WriteLine("Exception=" + ex.Message +", LoadPortNo=" + LoadPortNo);
                 }
-            }*/
+            }
         }
 
         /// <summary>送出 指令</summary>
