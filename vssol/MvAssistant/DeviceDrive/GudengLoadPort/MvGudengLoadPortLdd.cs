@@ -17,7 +17,8 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
 {
     public class MvGudengLoadPortLdd
     {
-       
+
+     //   public bool hasSocket = default(bool);
         public  delegate string OriginalInvokeMethod() ;
       
         private  OriginalInvokeMethod DelgateOriginalMethod=null;
@@ -170,12 +171,45 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
 
             }
         }
+        bool hasSocket = false;
+        void socketCheck()
+        {
+            var c = 0;
+            while (true)
+            {
+                Thread.Sleep(5000);
+                try
+                {
+                    if (!hasSocket)
+                    {
+                        c++;
 
-      
+                    }
+                    else
+                    {
+                        c = 0;
+                    }
+                    if (c >=2)
+                    {
+                        ClientSocket.Close();
+                        ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                        ClientSocket.Connect(ServerEndPoint);
+                        c = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+        Thread SockectCheckTh;
 
     /// <summary>監聽 Server 的Method</summary>
     private void ListenFromServer()
         {
+            SockectCheckTh = new Thread(socketCheck);
+            SockectCheckTh.Start();
 
             int i = 0;
             while (true)
@@ -185,12 +219,16 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
                 byte[] B = new byte[1023];
                 try
                 {
+                    hasSocket = false;
+                    //hasSocket = false;
                     int inLine = ClientSocket.Receive(B);//從Server端回復(Listen Point)
+                    //hasSocket = true;
                     string rtn = Encoding.Default.GetString(B, 0, inLine);
-
+                    hasSocket = true;
                     //rtn = "~001,Placement,0@\0\0\0\0";
 
                     Debug.WriteLine("[RETURN] " + rtn +", LoadPortNo=" + LoadPortNo);
+
                     rtn = rtn.Replace("\0", "");
                     if (string.IsNullOrEmpty(rtn.Trim()))
                     {
