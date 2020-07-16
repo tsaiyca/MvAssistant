@@ -175,7 +175,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
         {
             byte[] buffer = new byte[12];
 	        BitConverter.GetBytes(onOff).CopyTo(buffer, 0);
-	        BitConverter.GetBytes(keepAliveTime).CopyTo(buffer, 4);
+             BitConverter.GetBytes(keepAliveTime).CopyTo(buffer, 4);
 	        BitConverter.GetBytes(keepAliveInterval).CopyTo(buffer, 8);
 	        return buffer;
 	    }
@@ -183,7 +183,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
     /// <summary>監聽 Server 的Method</summary>
     private void ListenFromServer()
         {
-       var i=     ClientSocket.IOControl(IOControlCode.KeepAliveValues, GetKeepAliveSetting(1, 5000, 5000), null);
+       //var i=     ClientSocket.IOControl(IOControlCode.KeepAliveValues, GetKeepAliveSetting(1, 5000, 5000), null);
             while (true)
             {
                 try
@@ -212,6 +212,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
                             OnReceviceRtnFromServerHandler.Invoke(this, eventArgs);
                         }
                     }
+                    System.Threading.Thread.Sleep(20);
 
                 }
                 catch(Exception ex)

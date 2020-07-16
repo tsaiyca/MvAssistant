@@ -6,6 +6,7 @@ using MvAssistant.DeviceDrive.KjMachineDrawer.DrawerEventArgs;
 using MvAssistant.DeviceDrive.KjMachineDrawer.ReplyCode;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -508,19 +509,26 @@ namespace MvAssistantMacVerifyEqp
         {
             TextBox textBox = null;
             string index = "";
-            if (loadport.LoadPortNo == 1)
+            try
             {
-                textBox = MyForm.txtBxLoportAResult;
-                index = "A";
+                if (loadport.LoadPortNo == 1)
+                {
+                    textBox = MyForm.txtBxLoportAResult;
+                    index = "A";
+                }
+                else if (loadport.LoadPortNo == 2)
+                {
+                    textBox = MyForm.txtBxLoportBResult;
+                    index = "B";
+                }
+                //   textBox.ScrollToCaret();
+                //  textBox.Text = textBox.Text + "\r\n" + text.Replace("[]", "[" +index +"]");
+                textBox.AppendText(text.Replace("[]", "[" + index + "]") + "\r\n");
             }
-            else if (loadport.LoadPortNo == 2)
+            catch(Exception ex)
             {
-                textBox = MyForm.txtBxLoportBResult;
-                index = "B";
+                Debug.WriteLine(ex.Message);
             }
-         //   textBox.ScrollToCaret();
-          //  textBox.Text = textBox.Text + "\r\n" + text.Replace("[]", "[" +index +"]");
-            textBox.AppendText(text.Replace("[]", "[" + index + "]") + "\r\n");
         }
         public void ResetResult(MvGudengLoadPortLdd loadport)
         {
