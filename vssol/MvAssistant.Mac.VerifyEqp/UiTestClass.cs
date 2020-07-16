@@ -195,8 +195,9 @@ namespace MvAssistantMacVerifyEqp
             {
                 textBox = MyFORM.txtBxDrawerDResult;
             }
-            textBox.Text = textBox.Text + "\r\n" + text;
-            textBox.Focus();
+            //textBox.Text = textBox.Text + "\r\n" + text;
+            textBox.AppendText(text + "\r\n");
+            // textBox.Focus();
         }
         /// <summary>Event ReplyTrayMotion(111)</summary>
         /// <param name="sender"></param>
@@ -517,8 +518,9 @@ namespace MvAssistantMacVerifyEqp
                 textBox = MyForm.txtBxLoportBResult;
                 index = "B";
             }
-            textBox.ScrollToCaret();
-            textBox.Text = textBox.Text + "\r\n" + text.Replace("[]", "[" +index +"]");
+         //   textBox.ScrollToCaret();
+          //  textBox.Text = textBox.Text + "\r\n" + text.Replace("[]", "[" +index +"]");
+            textBox.AppendText(text.Replace("[]", "[" + index + "]") + "\r\n");
         }
         public void ResetResult(MvGudengLoadPortLdd loadport)
         {
