@@ -502,7 +502,7 @@ namespace MvAssistantMacVerifyEqp
 
             }
         }
-        void SetResult(MvGudengLoadPortLdd loadport, string text)
+       public void SetResult(MvGudengLoadPortLdd loadport, string text)
         {
             TextBox textBox = null;
             string index = "";
@@ -634,7 +634,7 @@ namespace MvAssistantMacVerifyEqp
         private void OnDockPODComplete_HasReticle(object sender, EventArgs args)
         {
             var loadport = (MvGudengLoadPortLdd)sender;
-            SetResult(loadport, "DockPODComplete_HasReticle []");
+            SetResult(loadport, "<<DockPODComplete_HasReticle []>>");
             this.EnableLoadportOperate(loadport);
           
             if (loadport.LoadPortNo == 1 && TestLoadPorts.Loport1CycleRunFlag == true)
@@ -654,7 +654,7 @@ namespace MvAssistantMacVerifyEqp
         private void OnDockPODComplete_Empty(object sender, EventArgs args)
         {
             var loadport = (MvGudengLoadPortLdd)sender;
-            SetResult(loadport, "DockPODComplete_Empty []");
+            SetResult(loadport, "<<DockPODComplete_Empty []>>");
             this.EnableLoadportOperate(loadport);
           
             if (loadport.LoadPortNo==1 && TestLoadPorts.Loport1CycleRunFlag == true)
@@ -675,7 +675,7 @@ namespace MvAssistantMacVerifyEqp
         private void OnUndockComplete(object sender, EventArgs args)
         {
             var loadport = (MvGudengLoadPortLdd)sender;
-            SetResult(loadport, "UndockComplete []");
+            SetResult(loadport, "<<UndockComplete []>>");
             this.EnableLoadportOperate(loadport);
             System.Threading.Thread.Sleep(1000);
 
@@ -687,6 +687,7 @@ namespace MvAssistantMacVerifyEqp
                 if (times >= targetTimes)
                 {
                     SetResult(loadport, "Cycle Run []    Complete----------");
+                    TestLoadPorts.Loport1CycleRunFlag = false;
                 }
                 else
                 {
@@ -702,6 +703,7 @@ namespace MvAssistantMacVerifyEqp
                 if (times >= targetTimes)
                 {
                     SetResult(loadport, "Cycle Run []    Complete----------");
+                    TestLoadPorts.Loport1CycleRunFlag = false;
                 }
                 else
                 {

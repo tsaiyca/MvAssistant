@@ -561,7 +561,8 @@ namespace MvAssistantMacVerifyEqp
                 var times = Convert.ToInt32(txtBxLoadPortACurrentCycle.Text);
                 times++;
                 txtBxLoadPortACurrentCycle.Text = times.ToString();
-                txtBxLoportAResult.Text = txtBxLoportAResult.Text + $"\r\nCycles: {times}............\r\n[DOCK]";
+              //  txtBxLoportAResult.Text = txtBxLoportAResult.Text + $"\r\nCycles: {times}............\r\n[DOCK]";
+                loadPorts.SetResult(loadPorts.LoadPort1, $"\r\nLoadPort[] Cycles: {times}............\r\n[DOCK]");
             }
             else
             {
@@ -574,7 +575,8 @@ namespace MvAssistantMacVerifyEqp
         {
             if (TestLoadPorts.Loport1CycleRunFlag)
             {
-                txtBxLoportAResult.Text = txtBxLoportAResult.Text + "\r\n[UN DOCK]";
+               // txtBxLoportAResult.Text = txtBxLoportAResult.Text + "\r\n[UN DOCK]";
+                loadPorts.SetResult(loadPorts.LoadPort1, "\r\nLoadPort[] [UN DOCK]");
             }
             else
             {
@@ -594,7 +596,8 @@ namespace MvAssistantMacVerifyEqp
                 var times = Convert.ToInt32(txtBxLoadPortBCurrentCycle.Text);
                 times++;
                 txtBxLoadPortBCurrentCycle.Text = times.ToString();
-                txtBxLoportBResult.Text = txtBxLoportBResult.Text + $"\r\nCycle: {times}............\r\n[DOCK]";
+                //txtBxLoportBResult.Text = txtBxLoportBResult.Text + $"\r\nCycle: {times}............\r\n[DOCK]";
+                loadPorts.SetResult(loadPorts.LoadPort2, $"\r\nLoadPort[] Cycle: {times}............\r\n[DOCK]");
             }
             else
             {
@@ -620,7 +623,8 @@ namespace MvAssistantMacVerifyEqp
             
             if(TestLoadPorts.Loport2CycleRunFlag)
             {
-                txtBxLoportBResult.Text = txtBxLoportBResult.Text + "\r\n[UN DOCK]";
+                //txtBxLoportBResult.Text = txtBxLoportBResult.Text + "\r\n[UN DOCK]";
+                loadPorts.SetResult(loadPorts.LoadPort2, "\r\nLoport[] [UN DOCK]");
             }
             else
             {
