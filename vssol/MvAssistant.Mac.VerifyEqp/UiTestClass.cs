@@ -648,7 +648,7 @@ namespace MvAssistantMacVerifyEqp
             {
                 var timeSlipt = (int)MyForm.numLoadPortBSliptSec.Value;
                 System.Threading.Thread.Sleep(timeSlipt);
-                MyForm.btnLoadPortBUnDock_Click(MyForm.btnLoadPortAUnDock, EventArgs.Empty);
+                MyForm.btnLoadPortBUnDock_Click(MyForm.btnLoadPortBUnDock, EventArgs.Empty);
             }
             // NoteEventResult($"IP={loadport.ServerEndPoint}, Event={nameof(OnDockPODComplete_HasReticle).Replace("On", "")}");
         }
@@ -692,6 +692,9 @@ namespace MvAssistantMacVerifyEqp
                 }
                 else
                 {
+                 
+                    times++;
+                    MyForm.txtBxLoadPortACurrentCycle.Text = times.ToString();
                     var timeSlipt = (int)MyForm.numLoadPortASliptSec.Value;
                     MyForm.btnLoadPortADock_Click(MyForm.btnLoadPortADock, EventArgs.Empty);
                 }
@@ -708,6 +711,8 @@ namespace MvAssistantMacVerifyEqp
                 }
                 else
                 {
+                    times++;
+                    MyForm.txtBxLoadPortBCurrentCycle.Text = times.ToString();
                     var timeSlipt =(int) MyForm.numLoadPortBSliptSec.Value;
                     System.Threading.Thread.Sleep(timeSlipt * 1000);
                     MyForm.btnLoadPortADock_Click(MyForm.btnLoadPortADock, EventArgs.Empty);

@@ -137,7 +137,6 @@
             this.numLoadPortBTargetCycles = new System.Windows.Forms.NumericUpDown();
             this.numLoadPortASliptSec = new System.Windows.Forms.NumericUpDown();
             this.numLoadPortBSliptSec = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -1349,7 +1348,6 @@
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.numLoadPortBSliptSec);
             this.groupBox4.Controls.Add(this.txtBxLoadPortBCurrentCycle);
             this.groupBox4.Controls.Add(this.btnLoadPortBCycleStart);
@@ -1446,15 +1444,6 @@
             0,
             0});
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 96);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 12);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "label6";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -1478,9 +1467,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(183, 28);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.Size = new System.Drawing.Size(53, 12);
             this.label10.TabIndex = 7;
-            this.label10.Text = "已執行次數";
+            this.label10.Text = "目前次數";
             // 
             // label11
             // 
@@ -1672,6 +1661,5 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label6;
     }
 }

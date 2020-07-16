@@ -560,7 +560,7 @@ namespace MvAssistantMacVerifyEqp
             {
                 var times = Convert.ToInt32(txtBxLoadPortACurrentCycle.Text);
                 times++;
-                txtBxLoadPortACurrentCycle.Text = times.ToString();
+               // txtBxLoadPortACurrentCycle.Text = times.ToString();
               //  txtBxLoportAResult.Text = txtBxLoportAResult.Text + $"\r\nCycles: {times}............\r\n[DOCK]";
                 loadPorts.SetResult(loadPorts.LoadPort1, $"\r\nLoadPort[] Cycles: {times}............\r\n[DOCK]");
             }
@@ -595,7 +595,7 @@ namespace MvAssistantMacVerifyEqp
             {
                 var times = Convert.ToInt32(txtBxLoadPortBCurrentCycle.Text);
                 times++;
-                txtBxLoadPortBCurrentCycle.Text = times.ToString();
+               // txtBxLoadPortBCurrentCycle.Text = times.ToString();
                 //txtBxLoportBResult.Text = txtBxLoportBResult.Text + $"\r\nCycle: {times}............\r\n[DOCK]";
                 loadPorts.SetResult(loadPorts.LoadPort2, $"\r\nLoadPort[] Cycle: {times}............\r\n[DOCK]");
             }
