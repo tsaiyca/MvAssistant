@@ -685,6 +685,8 @@ namespace MvAssistantMacVerifyEqp
             {
                 var times = Convert.ToInt32(MyForm.txtBxLoadPortACurrentCycle.Text);
                 var targetTimes = MyForm.numLoadPortATargetCycles.Value;
+                times++;
+                MyForm.txtBxLoadPortACurrentCycle.Text = times.ToString();
                 if (times >= targetTimes)
                 {
                     SetResult(loadport, "Cycle Run []    Complete----------");
@@ -693,8 +695,7 @@ namespace MvAssistantMacVerifyEqp
                 else
                 {
                  
-                    times++;
-                    MyForm.txtBxLoadPortACurrentCycle.Text = times.ToString();
+                   
                     var timeSlipt = (int)MyForm.numLoadPortASliptSec.Value;
                     MyForm.btnLoadPortADock_Click(MyForm.btnLoadPortADock, EventArgs.Empty);
                 }
@@ -704,6 +705,8 @@ namespace MvAssistantMacVerifyEqp
 
                 var times = Convert.ToInt32(MyForm.txtBxLoadPortBCurrentCycle.Text);
                 var targetTimes = MyForm.numLoadPortBTargetCycles.Value;
+                times++;
+                MyForm.txtBxLoadPortBCurrentCycle.Text = times.ToString();
                 if (times >= targetTimes)
                 {
                     SetResult(loadport, "Cycle Run []    Complete----------");
@@ -711,8 +714,7 @@ namespace MvAssistantMacVerifyEqp
                 }
                 else
                 {
-                    times++;
-                    MyForm.txtBxLoadPortBCurrentCycle.Text = times.ToString();
+                   
                     var timeSlipt =(int) MyForm.numLoadPortBSliptSec.Value;
                     System.Threading.Thread.Sleep(timeSlipt * 1000);
                     MyForm.btnLoadPortADock_Click(MyForm.btnLoadPortADock, EventArgs.Empty);
