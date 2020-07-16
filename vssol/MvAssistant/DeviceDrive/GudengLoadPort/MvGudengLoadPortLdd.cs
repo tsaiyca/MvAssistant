@@ -184,8 +184,14 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
 
                     //rtn = "~001,Placement,0@\0\0\0\0";
 
-                    Debug.WriteLine("[RETURN] " + rtn);
+                    Debug.WriteLine("[RETURN] " + rtn +", LoadPortNo=" + LoadPortNo);
                     rtn = rtn.Replace("\0", "");
+                    if (string.IsNullOrEmpty(rtn.Trim()))
+                    {
+                        var s = 0;
+                        s = 1;
+                        Debug.WriteLine("Rtn=EMPTY, LoadPortNo=" + LoadPortNo);
+                    }
                     if (OnReceviceRtnFromServerHandler != null)
                     {
                         // 可能一次會有多個結果
@@ -199,7 +205,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
                 }
                 catch(Exception ex)
                 {
-
+                    Debug.WriteLine("Exception=" + ex.Message +", LoadPortNo=" + LoadPortNo);
                 }
             }
         }
@@ -208,7 +214,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
         /// <param name="commandText">指令</param>
         private void Send(string commandText)
         {
-           // Debug.WriteLine("[COMMAND]" + commandText);
+            Debug.WriteLine("[COMMAND]" + commandText + ", LoadPortNo=" + LoadPortNo);
             byte[] B = Encoding.Default.GetBytes(commandText);
 #if OnlyObserveCommandText
 #else

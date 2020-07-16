@@ -196,6 +196,7 @@ namespace MvAssistantMacVerifyEqp
                 textBox = MyFORM.txtBxDrawerDResult;
             }
             textBox.Text = textBox.Text + "\r\n" + text;
+            textBox.Focus();
         }
         /// <summary>Event ReplyTrayMotion(111)</summary>
         /// <param name="sender"></param>
@@ -644,7 +645,7 @@ namespace MvAssistantMacVerifyEqp
                 System.Threading.Thread.Sleep(timeSlipt);
                 MyForm.btnLoadPortAUnDock_Click(MyForm.btnLoadPortAUnDock, EventArgs.Empty);
             }
-            if (LoadPort2.LoadPortNo == 2 && Loport2CycleRunFlag == true)
+            if (loadport.LoadPortNo == 2 && Loport2CycleRunFlag == true)
             {
                 var timeSlipt = (int)MyForm.numLoadPortBSliptSec.Value;
                 System.Threading.Thread.Sleep(timeSlipt);
@@ -664,7 +665,7 @@ namespace MvAssistantMacVerifyEqp
                 System.Threading.Thread.Sleep(timeSlipt);
                 MyForm.btnLoadPortAUnDock_Click(MyForm.btnLoadPortAUnDock, EventArgs.Empty);
             }
-            if (LoadPort2.LoadPortNo==2 && TestLoadPorts.Loport2CycleRunFlag == true)
+            if (loadport.LoadPortNo==2 && TestLoadPorts.Loport2CycleRunFlag == true)
             {
                 var timeSlipt = (int)MyForm.numLoadPortBSliptSec.Value;
                 System.Threading.Thread.Sleep(timeSlipt);
