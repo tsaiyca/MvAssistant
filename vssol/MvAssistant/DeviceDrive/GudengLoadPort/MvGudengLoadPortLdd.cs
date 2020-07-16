@@ -176,11 +176,15 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
     /// <summary>監聽 Server 的Method</summary>
     private void ListenFromServer()
         {
+
+            int i = 0;
             while (true)
             {
+
+                
+                byte[] B = new byte[1023];
                 try
                 {
-                    byte[] B = new byte[1023];
                     int inLine = ClientSocket.Receive(B);//從Server端回復(Listen Point)
                     string rtn = Encoding.Default.GetString(B, 0, inLine);
 
@@ -190,9 +194,9 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
                     rtn = rtn.Replace("\0", "");
                     if (string.IsNullOrEmpty(rtn.Trim()))
                     {
-                        var s = 0;
-                        s = 1;
+                       
                         Debug.WriteLine("Rtn=EMPTY, LoadPortNo=" + LoadPortNo);
+                        continue;
                     }
                     if (OnReceviceRtnFromServerHandler != null)
                     {
@@ -200,6 +204,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
                         var rtnAry = rtn.Split(new string[] { BaseHostToLoadPortCommand.CommandPostfixText }, StringSplitOptions.RemoveEmptyEntries);
                         foreach (var element in rtnAry)
                         {
+                            Thread.Sleep(10);
                             var eventArgs = new OnReceviceRtnFromServerEventArgs(element);
                             OnReceviceRtnFromServerHandler.Invoke(this, eventArgs);
                         }
@@ -210,6 +215,8 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
                 {
                     Debug.WriteLine("Exception=" + ex.Message +", LoadPortNo=" + LoadPortNo);
                 }
+              //  Thread.Sleep(20);
+                
             }
         }
 
