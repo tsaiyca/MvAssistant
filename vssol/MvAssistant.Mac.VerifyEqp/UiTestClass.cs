@@ -533,11 +533,11 @@ namespace MvAssistantMacVerifyEqp
         {
            if(loadport.LoadPortNo==1)
             {
-                MyForm.grpLoadportA.Enabled = false;
+                //MyForm.grpLoadportA.Enabled = false;
             }
             else if (loadport.LoadPortNo == 2)
             {
-                MyForm.grpLoadportB.Enabled = false;
+               // MyForm.grpLoadportB.Enabled = false;
             }
         }
 
@@ -678,7 +678,7 @@ namespace MvAssistantMacVerifyEqp
             var loadport = (MvGudengLoadPortLdd)sender;
             SetResult(loadport, "<<UndockComplete []>>");
             this.EnableLoadportOperate(loadport);
-            System.Threading.Thread.Sleep(1000);
+           // System.Threading.Thread.Sleep(1000);
 
           
             if (loadport.LoadPortNo == 1 && TestLoadPorts.Loport1CycleRunFlag == true )
@@ -697,10 +697,11 @@ namespace MvAssistantMacVerifyEqp
                  
                    
                     var timeSlipt = (int)MyForm.numLoadPortASliptSec.Value;
+                    System.Threading.Thread.Sleep(timeSlipt * 1000);
                     MyForm.btnLoadPortADock_Click(MyForm.btnLoadPortADock, EventArgs.Empty);
                 }
             }
-            if (LoadPort2.LoadPortNo == 2 && TestLoadPorts.Loport2CycleRunFlag == true)
+            if (loadport.LoadPortNo == 2 && TestLoadPorts.Loport2CycleRunFlag == true)
             {
 
                 var times = Convert.ToInt32(MyForm.txtBxLoadPortBCurrentCycle.Text);
@@ -710,7 +711,7 @@ namespace MvAssistantMacVerifyEqp
                 if (times >= targetTimes)
                 {
                     SetResult(loadport, "Cycle Run []    Complete----------");
-                    TestLoadPorts.Loport1CycleRunFlag = false;
+                    TestLoadPorts.Loport2CycleRunFlag = false;
                 }
                 else
                 {

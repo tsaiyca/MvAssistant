@@ -418,7 +418,7 @@
             this.grpLoadportB.Controls.Add(this.btnInitialLoadportB);
             this.grpLoadportB.Controls.Add(this.btnLoadportBRFID);
             this.grpLoadportB.Controls.Add(this.btnLoadportBBarcode);
-            this.grpLoadportB.Location = new System.Drawing.Point(607, 31);
+            this.grpLoadportB.Location = new System.Drawing.Point(675, 31);
             this.grpLoadportB.Margin = new System.Windows.Forms.Padding(2);
             this.grpLoadportB.Name = "grpLoadportB";
             this.grpLoadportB.Padding = new System.Windows.Forms.Padding(2);
@@ -565,7 +565,7 @@
             this.txtBxLoportBResult.Name = "txtBxLoportBResult";
             this.txtBxLoportBResult.ReadOnly = true;
             this.txtBxLoportBResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBxLoportBResult.Size = new System.Drawing.Size(278, 213);
+            this.txtBxLoportBResult.Size = new System.Drawing.Size(278, 222);
             this.txtBxLoportBResult.TabIndex = 6;
             // 
             // btnLoadPortBAlarmReset

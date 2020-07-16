@@ -769,6 +769,16 @@ namespace MvAssistantMacVerifyEqp
         {
             TestLoadPorts.Loport2CycleRunFlag = false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            grpLoadportA.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            grpLoadportB.Enabled = true;
+        }
     }
 
 }
