@@ -32,6 +32,15 @@
             this.TabPageDrawerAndLoadPort = new System.Windows.Forms.TabPage();
             this.grpLoadPorts = new System.Windows.Forms.GroupBox();
             this.grpLoadportA = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numLoadPortASliptSec = new System.Windows.Forms.NumericUpDown();
+            this.txtBxLoadPortACurrentCycle = new System.Windows.Forms.TextBox();
+            this.btnLoadPortACycleStart = new System.Windows.Forms.Button();
+            this.btnLoadPortACycleStop = new System.Windows.Forms.Button();
+            this.numLoadPortATargetCycles = new System.Windows.Forms.NumericUpDown();
             this.btnLoadPortAUnDock = new System.Windows.Forms.Button();
             this.btnLoadPortADock = new System.Windows.Forms.Button();
             this.txtBxLoportAResult = new System.Windows.Forms.TextBox();
@@ -40,6 +49,15 @@
             this.btnLoadportARFID = new System.Windows.Forms.Button();
             this.btnLoadportABarcode = new System.Windows.Forms.Button();
             this.grpLoadportB = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.numLoadPortBSliptSec = new System.Windows.Forms.NumericUpDown();
+            this.txtBxLoadPortBCurrentCycle = new System.Windows.Forms.TextBox();
+            this.btnLoadPortBCycleStart = new System.Windows.Forms.Button();
+            this.btnLoadPortBCycleStop = new System.Windows.Forms.Button();
+            this.numLoadPortBTargetCycles = new System.Windows.Forms.NumericUpDown();
             this.btnLoadPortBUnDock = new System.Windows.Forms.Button();
             this.btnLoadPortBDock = new System.Windows.Forms.Button();
             this.txtBxLoportBResult = new System.Windows.Forms.TextBox();
@@ -125,29 +143,17 @@
             this.txtBoxType = new System.Windows.Forms.TextBox();
             this.BTPutDR = new System.Windows.Forms.Button();
             this.BTGetDR = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numLoadPortATargetCycles = new System.Windows.Forms.NumericUpDown();
-            this.btnLoadPortACycleStop = new System.Windows.Forms.Button();
-            this.btnLoadPortACycleStart = new System.Windows.Forms.Button();
-            this.txtBxLoadPortACurrentCycle = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtBxLoadPortBCurrentCycle = new System.Windows.Forms.TextBox();
-            this.btnLoadPortBCycleStart = new System.Windows.Forms.Button();
-            this.btnLoadPortBCycleStop = new System.Windows.Forms.Button();
-            this.numLoadPortBTargetCycles = new System.Windows.Forms.NumericUpDown();
-            this.numLoadPortASliptSec = new System.Windows.Forms.NumericUpDown();
-            this.numLoadPortBSliptSec = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TabPageDrawerAndLoadPort.SuspendLayout();
             this.grpLoadPorts.SuspendLayout();
             this.grpLoadportA.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortASliptSec)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortATargetCycles)).BeginInit();
             this.grpLoadportB.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortBSliptSec)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortBTargetCycles)).BeginInit();
             this.GrpDrawer.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -160,12 +166,6 @@
             this.GrpDrawerA.SuspendLayout();
             this.grpDrawerAComp.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortATargetCycles)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortBTargetCycles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortASliptSec)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortBSliptSec)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -222,6 +222,116 @@
             this.grpLoadportA.TabIndex = 1;
             this.grpLoadportA.TabStop = false;
             this.grpLoadportA.Text = "Load port A(192.168.0.20)";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.numLoadPortASliptSec);
+            this.groupBox3.Controls.Add(this.txtBxLoadPortACurrentCycle);
+            this.groupBox3.Controls.Add(this.btnLoadPortACycleStart);
+            this.groupBox3.Controls.Add(this.btnLoadPortACycleStop);
+            this.groupBox3.Controls.Add(this.numLoadPortATargetCycles);
+            this.groupBox3.Location = new System.Drawing.Point(292, 93);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(269, 146);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Load Port A Dock/Undock Cycle";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(183, 28);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "已執行次數";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(92, 28);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "間隔秒數";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(5, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "計畫次數";
+            // 
+            // numLoadPortASliptSec
+            // 
+            this.numLoadPortASliptSec.Location = new System.Drawing.Point(94, 48);
+            this.numLoadPortASliptSec.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numLoadPortASliptSec.Name = "numLoadPortASliptSec";
+            this.numLoadPortASliptSec.Size = new System.Drawing.Size(60, 22);
+            this.numLoadPortASliptSec.TabIndex = 4;
+            this.numLoadPortASliptSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numLoadPortASliptSec.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // txtBxLoadPortACurrentCycle
+            // 
+            this.txtBxLoadPortACurrentCycle.Location = new System.Drawing.Point(185, 48);
+            this.txtBxLoadPortACurrentCycle.Name = "txtBxLoadPortACurrentCycle";
+            this.txtBxLoadPortACurrentCycle.ReadOnly = true;
+            this.txtBxLoadPortACurrentCycle.Size = new System.Drawing.Size(64, 22);
+            this.txtBxLoadPortACurrentCycle.TabIndex = 3;
+            this.txtBxLoadPortACurrentCycle.Text = "0";
+            this.txtBxLoadPortACurrentCycle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnLoadPortACycleStart
+            // 
+            this.btnLoadPortACycleStart.Location = new System.Drawing.Point(6, 88);
+            this.btnLoadPortACycleStart.Name = "btnLoadPortACycleStart";
+            this.btnLoadPortACycleStart.Size = new System.Drawing.Size(257, 23);
+            this.btnLoadPortACycleStart.TabIndex = 2;
+            this.btnLoadPortACycleStart.Text = "Load Port A Cycle Start";
+            this.btnLoadPortACycleStart.UseVisualStyleBackColor = true;
+            this.btnLoadPortACycleStart.Click += new System.EventHandler(this.btnLoadPortACycleStart_Click);
+            // 
+            // btnLoadPortACycleStop
+            // 
+            this.btnLoadPortACycleStop.Location = new System.Drawing.Point(6, 117);
+            this.btnLoadPortACycleStop.Name = "btnLoadPortACycleStop";
+            this.btnLoadPortACycleStop.Size = new System.Drawing.Size(257, 23);
+            this.btnLoadPortACycleStop.TabIndex = 1;
+            this.btnLoadPortACycleStop.Text = "Load Port A Cycle Stop";
+            this.btnLoadPortACycleStop.UseVisualStyleBackColor = true;
+            this.btnLoadPortACycleStop.Click += new System.EventHandler(this.btnLoadPortACycleStop_Click);
+            // 
+            // numLoadPortATargetCycles
+            // 
+            this.numLoadPortATargetCycles.Location = new System.Drawing.Point(6, 48);
+            this.numLoadPortATargetCycles.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numLoadPortATargetCycles.Name = "numLoadPortATargetCycles";
+            this.numLoadPortATargetCycles.Size = new System.Drawing.Size(68, 22);
+            this.numLoadPortATargetCycles.TabIndex = 0;
+            this.numLoadPortATargetCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numLoadPortATargetCycles.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
             // btnLoadPortAUnDock
             // 
@@ -316,6 +426,116 @@
             this.grpLoadportB.TabIndex = 0;
             this.grpLoadportB.TabStop = false;
             this.grpLoadportB.Text = "Load port B(192.168.0.21)";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.numLoadPortBSliptSec);
+            this.groupBox4.Controls.Add(this.txtBxLoadPortBCurrentCycle);
+            this.groupBox4.Controls.Add(this.btnLoadPortBCycleStart);
+            this.groupBox4.Controls.Add(this.btnLoadPortBCycleStop);
+            this.groupBox4.Controls.Add(this.numLoadPortBTargetCycles);
+            this.groupBox4.Location = new System.Drawing.Point(291, 96);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(269, 146);
+            this.groupBox4.TabIndex = 11;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Load Port B Dock/Undock Cycle";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(192, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 12);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "次數";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(101, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "間隔秒數";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(14, 29);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 12);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "計畫次數";
+            // 
+            // numLoadPortBSliptSec
+            // 
+            this.numLoadPortBSliptSec.Location = new System.Drawing.Point(99, 47);
+            this.numLoadPortBSliptSec.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numLoadPortBSliptSec.Name = "numLoadPortBSliptSec";
+            this.numLoadPortBSliptSec.Size = new System.Drawing.Size(60, 22);
+            this.numLoadPortBSliptSec.TabIndex = 5;
+            this.numLoadPortBSliptSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numLoadPortBSliptSec.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // txtBxLoadPortBCurrentCycle
+            // 
+            this.txtBxLoadPortBCurrentCycle.Location = new System.Drawing.Point(199, 47);
+            this.txtBxLoadPortBCurrentCycle.Name = "txtBxLoadPortBCurrentCycle";
+            this.txtBxLoadPortBCurrentCycle.ReadOnly = true;
+            this.txtBxLoadPortBCurrentCycle.Size = new System.Drawing.Size(64, 22);
+            this.txtBxLoadPortBCurrentCycle.TabIndex = 3;
+            this.txtBxLoadPortBCurrentCycle.Text = "0";
+            this.txtBxLoadPortBCurrentCycle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnLoadPortBCycleStart
+            // 
+            this.btnLoadPortBCycleStart.Location = new System.Drawing.Point(6, 88);
+            this.btnLoadPortBCycleStart.Name = "btnLoadPortBCycleStart";
+            this.btnLoadPortBCycleStart.Size = new System.Drawing.Size(257, 23);
+            this.btnLoadPortBCycleStart.TabIndex = 2;
+            this.btnLoadPortBCycleStart.Text = "Load Port B Cycle Start";
+            this.btnLoadPortBCycleStart.UseVisualStyleBackColor = true;
+            this.btnLoadPortBCycleStart.Click += new System.EventHandler(this.btnLoadPortBCycleStart_Click);
+            // 
+            // btnLoadPortBCycleStop
+            // 
+            this.btnLoadPortBCycleStop.Location = new System.Drawing.Point(6, 117);
+            this.btnLoadPortBCycleStop.Name = "btnLoadPortBCycleStop";
+            this.btnLoadPortBCycleStop.Size = new System.Drawing.Size(257, 23);
+            this.btnLoadPortBCycleStop.TabIndex = 1;
+            this.btnLoadPortBCycleStop.Text = "Load Port B Cycle Stop";
+            this.btnLoadPortBCycleStop.UseVisualStyleBackColor = true;
+            this.btnLoadPortBCycleStop.Click += new System.EventHandler(this.btnLoadPortBCycleStop_Click);
+            // 
+            // numLoadPortBTargetCycles
+            // 
+            this.numLoadPortBTargetCycles.Location = new System.Drawing.Point(12, 47);
+            this.numLoadPortBTargetCycles.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numLoadPortBTargetCycles.Name = "numLoadPortBTargetCycles";
+            this.numLoadPortBTargetCycles.Size = new System.Drawing.Size(60, 22);
+            this.numLoadPortBTargetCycles.TabIndex = 0;
+            this.numLoadPortBTargetCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numLoadPortBTargetCycles.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
             // btnLoadPortBUnDock
             // 
@@ -1278,226 +1498,6 @@
             this.BTGetDR.UseVisualStyleBackColor = true;
             this.BTGetDR.Click += new System.EventHandler(this.BTGetDR_Click);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.numLoadPortASliptSec);
-            this.groupBox3.Controls.Add(this.txtBxLoadPortACurrentCycle);
-            this.groupBox3.Controls.Add(this.btnLoadPortACycleStart);
-            this.groupBox3.Controls.Add(this.btnLoadPortACycleStop);
-            this.groupBox3.Controls.Add(this.numLoadPortATargetCycles);
-            this.groupBox3.Location = new System.Drawing.Point(292, 93);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(269, 146);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Load Port A Dock/Undock Cycle";
-            // 
-            // numLoadPortATargetCycles
-            // 
-            this.numLoadPortATargetCycles.Location = new System.Drawing.Point(6, 48);
-            this.numLoadPortATargetCycles.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numLoadPortATargetCycles.Name = "numLoadPortATargetCycles";
-            this.numLoadPortATargetCycles.Size = new System.Drawing.Size(68, 22);
-            this.numLoadPortATargetCycles.TabIndex = 0;
-            this.numLoadPortATargetCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numLoadPortATargetCycles.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            // 
-            // btnLoadPortACycleStop
-            // 
-            this.btnLoadPortACycleStop.Location = new System.Drawing.Point(6, 117);
-            this.btnLoadPortACycleStop.Name = "btnLoadPortACycleStop";
-            this.btnLoadPortACycleStop.Size = new System.Drawing.Size(257, 23);
-            this.btnLoadPortACycleStop.TabIndex = 1;
-            this.btnLoadPortACycleStop.Text = "Load Port A Cycle Stop";
-            this.btnLoadPortACycleStop.UseVisualStyleBackColor = true;
-            this.btnLoadPortACycleStop.Click += new System.EventHandler(this.btnLoadPortACycleStop_Click);
-            // 
-            // btnLoadPortACycleStart
-            // 
-            this.btnLoadPortACycleStart.Location = new System.Drawing.Point(6, 88);
-            this.btnLoadPortACycleStart.Name = "btnLoadPortACycleStart";
-            this.btnLoadPortACycleStart.Size = new System.Drawing.Size(257, 23);
-            this.btnLoadPortACycleStart.TabIndex = 2;
-            this.btnLoadPortACycleStart.Text = "Load Port A Cycle Start";
-            this.btnLoadPortACycleStart.UseVisualStyleBackColor = true;
-            this.btnLoadPortACycleStart.Click += new System.EventHandler(this.btnLoadPortACycleStart_Click);
-            // 
-            // txtBxLoadPortACurrentCycle
-            // 
-            this.txtBxLoadPortACurrentCycle.Location = new System.Drawing.Point(185, 48);
-            this.txtBxLoadPortACurrentCycle.Name = "txtBxLoadPortACurrentCycle";
-            this.txtBxLoadPortACurrentCycle.ReadOnly = true;
-            this.txtBxLoadPortACurrentCycle.Size = new System.Drawing.Size(64, 22);
-            this.txtBxLoadPortACurrentCycle.TabIndex = 3;
-            this.txtBxLoadPortACurrentCycle.Text = "0";
-            this.txtBxLoadPortACurrentCycle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.numLoadPortBSliptSec);
-            this.groupBox4.Controls.Add(this.txtBxLoadPortBCurrentCycle);
-            this.groupBox4.Controls.Add(this.btnLoadPortBCycleStart);
-            this.groupBox4.Controls.Add(this.btnLoadPortBCycleStop);
-            this.groupBox4.Controls.Add(this.numLoadPortBTargetCycles);
-            this.groupBox4.Location = new System.Drawing.Point(291, 96);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(269, 146);
-            this.groupBox4.TabIndex = 11;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Load Port B Dock/Undock Cycle";
-            // 
-            // txtBxLoadPortBCurrentCycle
-            // 
-            this.txtBxLoadPortBCurrentCycle.Location = new System.Drawing.Point(199, 47);
-            this.txtBxLoadPortBCurrentCycle.Name = "txtBxLoadPortBCurrentCycle";
-            this.txtBxLoadPortBCurrentCycle.ReadOnly = true;
-            this.txtBxLoadPortBCurrentCycle.Size = new System.Drawing.Size(64, 22);
-            this.txtBxLoadPortBCurrentCycle.TabIndex = 3;
-            this.txtBxLoadPortBCurrentCycle.Text = "0";
-            this.txtBxLoadPortBCurrentCycle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnLoadPortBCycleStart
-            // 
-            this.btnLoadPortBCycleStart.Location = new System.Drawing.Point(6, 88);
-            this.btnLoadPortBCycleStart.Name = "btnLoadPortBCycleStart";
-            this.btnLoadPortBCycleStart.Size = new System.Drawing.Size(257, 23);
-            this.btnLoadPortBCycleStart.TabIndex = 2;
-            this.btnLoadPortBCycleStart.Text = "Load Port B Cycle Start";
-            this.btnLoadPortBCycleStart.UseVisualStyleBackColor = true;
-            this.btnLoadPortBCycleStart.Click += new System.EventHandler(this.btnLoadPortBCycleStart_Click);
-            // 
-            // btnLoadPortBCycleStop
-            // 
-            this.btnLoadPortBCycleStop.Location = new System.Drawing.Point(6, 117);
-            this.btnLoadPortBCycleStop.Name = "btnLoadPortBCycleStop";
-            this.btnLoadPortBCycleStop.Size = new System.Drawing.Size(257, 23);
-            this.btnLoadPortBCycleStop.TabIndex = 1;
-            this.btnLoadPortBCycleStop.Text = "Load Port B Cycle Stop";
-            this.btnLoadPortBCycleStop.UseVisualStyleBackColor = true;
-            this.btnLoadPortBCycleStop.Click += new System.EventHandler(this.btnLoadPortBCycleStop_Click);
-            // 
-            // numLoadPortBTargetCycles
-            // 
-            this.numLoadPortBTargetCycles.Location = new System.Drawing.Point(12, 47);
-            this.numLoadPortBTargetCycles.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numLoadPortBTargetCycles.Name = "numLoadPortBTargetCycles";
-            this.numLoadPortBTargetCycles.Size = new System.Drawing.Size(60, 22);
-            this.numLoadPortBTargetCycles.TabIndex = 0;
-            this.numLoadPortBTargetCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numLoadPortBTargetCycles.Value = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            // 
-            // numLoadPortASliptSec
-            // 
-            this.numLoadPortASliptSec.Location = new System.Drawing.Point(94, 48);
-            this.numLoadPortASliptSec.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numLoadPortASliptSec.Name = "numLoadPortASliptSec";
-            this.numLoadPortASliptSec.Size = new System.Drawing.Size(60, 22);
-            this.numLoadPortASliptSec.TabIndex = 4;
-            this.numLoadPortASliptSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numLoadPortASliptSec.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numLoadPortBSliptSec
-            // 
-            this.numLoadPortBSliptSec.Location = new System.Drawing.Point(99, 47);
-            this.numLoadPortBSliptSec.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numLoadPortBSliptSec.Name = "numLoadPortBSliptSec";
-            this.numLoadPortBSliptSec.Size = new System.Drawing.Size(60, 22);
-            this.numLoadPortBSliptSec.TabIndex = 5;
-            this.numLoadPortBSliptSec.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numLoadPortBSliptSec.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 28);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 12);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "計畫次數";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(92, 28);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 12);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "間隔秒數";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(183, 28);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 12);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "已執行次數";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(192, 29);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 12);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "已執行次數";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(101, 29);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 12);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "間隔秒數";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 29);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 12);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "計畫次數";
-            // 
             // FrmTestUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1512,8 +1512,16 @@
             this.grpLoadPorts.ResumeLayout(false);
             this.grpLoadportA.ResumeLayout(false);
             this.grpLoadportA.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortASliptSec)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortATargetCycles)).EndInit();
             this.grpLoadportB.ResumeLayout(false);
             this.grpLoadportB.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortBSliptSec)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortBTargetCycles)).EndInit();
             this.GrpDrawer.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1532,14 +1540,6 @@
             this.grpDrawerAComp.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortATargetCycles)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortBTargetCycles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortASliptSec)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numLoadPortBSliptSec)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -717,7 +717,7 @@ namespace MvAssistantMacVerifyEqp
                    
                     var timeSlipt =(int) MyForm.numLoadPortBSliptSec.Value;
                     System.Threading.Thread.Sleep(timeSlipt * 1000);
-                    MyForm.btnLoadPortADock_Click(MyForm.btnLoadPortADock, EventArgs.Empty);
+                    MyForm.btnLoadPortBDock_Click(MyForm.btnLoadPortBDock, EventArgs.Empty);
                 }
                // MyForm.btnLoadPortBDock_Click(MyForm.btnLoadPortBDock, EventArgs.Empty);
             }

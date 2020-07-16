@@ -759,8 +759,8 @@ namespace MvAssistantMacVerifyEqp
 
         private void btnLoadPortBCycleStart_Click(object sender, EventArgs e)
         {
-            txtBxLoadPortACurrentCycle.Text = "0";
-            this.loadPorts.ResetResult(loadPorts.LoadPort2);
+            txtBxLoadPortBCurrentCycle.Text = "0";
+           loadPorts.ResetResult(loadPorts.LoadPort2);
             TestLoadPorts.Loport2CycleRunFlag = true;
             btnLoadPortBDock_Click(btnLoadPortBDock, EventArgs.Empty);
         }
