@@ -137,6 +137,13 @@
             this.numLoadPortBTargetCycles = new System.Windows.Forms.NumericUpDown();
             this.numLoadPortASliptSec = new System.Windows.Forms.NumericUpDown();
             this.numLoadPortBSliptSec = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TabPageDrawerAndLoadPort.SuspendLayout();
             this.grpLoadPorts.SuspendLayout();
@@ -1274,6 +1281,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.numLoadPortASliptSec);
             this.groupBox3.Controls.Add(this.txtBxLoadPortACurrentCycle);
             this.groupBox3.Controls.Add(this.btnLoadPortACycleStart);
@@ -1288,14 +1298,14 @@
             // 
             // numLoadPortATargetCycles
             // 
-            this.numLoadPortATargetCycles.Location = new System.Drawing.Point(6, 38);
+            this.numLoadPortATargetCycles.Location = new System.Drawing.Point(6, 48);
             this.numLoadPortATargetCycles.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numLoadPortATargetCycles.Name = "numLoadPortATargetCycles";
-            this.numLoadPortATargetCycles.Size = new System.Drawing.Size(60, 22);
+            this.numLoadPortATargetCycles.Size = new System.Drawing.Size(68, 22);
             this.numLoadPortATargetCycles.TabIndex = 0;
             this.numLoadPortATargetCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numLoadPortATargetCycles.Value = new decimal(new int[] {
@@ -1326,7 +1336,7 @@
             // 
             // txtBxLoadPortACurrentCycle
             // 
-            this.txtBxLoadPortACurrentCycle.Location = new System.Drawing.Point(185, 38);
+            this.txtBxLoadPortACurrentCycle.Location = new System.Drawing.Point(185, 48);
             this.txtBxLoadPortACurrentCycle.Name = "txtBxLoadPortACurrentCycle";
             this.txtBxLoadPortACurrentCycle.ReadOnly = true;
             this.txtBxLoadPortACurrentCycle.Size = new System.Drawing.Size(64, 22);
@@ -1336,6 +1346,10 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.numLoadPortBSliptSec);
             this.groupBox4.Controls.Add(this.txtBxLoadPortBCurrentCycle);
             this.groupBox4.Controls.Add(this.btnLoadPortBCycleStart);
@@ -1350,7 +1364,7 @@
             // 
             // txtBxLoadPortBCurrentCycle
             // 
-            this.txtBxLoadPortBCurrentCycle.Location = new System.Drawing.Point(199, 36);
+            this.txtBxLoadPortBCurrentCycle.Location = new System.Drawing.Point(199, 47);
             this.txtBxLoadPortBCurrentCycle.Name = "txtBxLoadPortBCurrentCycle";
             this.txtBxLoadPortBCurrentCycle.ReadOnly = true;
             this.txtBxLoadPortBCurrentCycle.Size = new System.Drawing.Size(64, 22);
@@ -1380,7 +1394,7 @@
             // 
             // numLoadPortBTargetCycles
             // 
-            this.numLoadPortBTargetCycles.Location = new System.Drawing.Point(12, 36);
+            this.numLoadPortBTargetCycles.Location = new System.Drawing.Point(12, 47);
             this.numLoadPortBTargetCycles.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1398,7 +1412,7 @@
             // 
             // numLoadPortASliptSec
             // 
-            this.numLoadPortASliptSec.Location = new System.Drawing.Point(94, 38);
+            this.numLoadPortASliptSec.Location = new System.Drawing.Point(94, 48);
             this.numLoadPortASliptSec.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1416,7 +1430,7 @@
             // 
             // numLoadPortBSliptSec
             // 
-            this.numLoadPortBSliptSec.Location = new System.Drawing.Point(99, 36);
+            this.numLoadPortBSliptSec.Location = new System.Drawing.Point(99, 47);
             this.numLoadPortBSliptSec.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1431,6 +1445,69 @@
             0,
             0,
             0});
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 96);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 12);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "label6";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(5, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "計畫次數";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(92, 28);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "間隔秒數";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(183, 28);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "已執行次數";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(192, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 12);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "已執行次數";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(101, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "間隔秒數";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(14, 29);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 12);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "計畫次數";
             // 
             // FrmTestUI
             // 
@@ -1589,5 +1666,12 @@
         public System.Windows.Forms.NumericUpDown numLoadPortBTargetCycles;
         public System.Windows.Forms.NumericUpDown numLoadPortASliptSec;
         public System.Windows.Forms.NumericUpDown numLoadPortBSliptSec;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label6;
     }
 }

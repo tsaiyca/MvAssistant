@@ -516,6 +516,7 @@ namespace MvAssistantMacVerifyEqp
                 textBox = MyForm.txtBxLoportBResult;
                 index = "B";
             }
+            textBox.ScrollToCaret();
             textBox.Text = textBox.Text + "\r\n" + text.Replace("[]", "[" +index +"]");
         }
         public void ResetResult(MvGudengLoadPortLdd loadport)

@@ -746,6 +746,7 @@ namespace MvAssistantMacVerifyEqp
 
         private void btnLoadPortACycleStart_Click(object sender, EventArgs e)
         {
+            txtBxLoadPortACurrentCycle.Text = "0";
             this.loadPorts.ResetResult(loadPorts.LoadPort1);
             TestLoadPorts.Loport1CycleRunFlag = true;
             btnLoadPortADock_Click(btnLoadPortADock, EventArgs.Empty);
@@ -758,6 +759,7 @@ namespace MvAssistantMacVerifyEqp
 
         private void btnLoadPortBCycleStart_Click(object sender, EventArgs e)
         {
+            txtBxLoadPortACurrentCycle.Text = "0";
             this.loadPorts.ResetResult(loadPorts.LoadPort2);
             TestLoadPorts.Loport2CycleRunFlag = true;
             btnLoadPortBDock_Click(btnLoadPortBDock, EventArgs.Empty);
