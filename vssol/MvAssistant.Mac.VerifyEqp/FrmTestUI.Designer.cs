@@ -245,9 +245,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(183, 28);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.Size = new System.Drawing.Size(53, 12);
             this.label10.TabIndex = 7;
-            this.label10.Text = "已執行次數";
+            this.label10.Text = "完成次數";
             // 
             // label9
             // 
@@ -449,9 +449,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(192, 29);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 12);
+            this.label11.Size = new System.Drawing.Size(53, 12);
             this.label11.TabIndex = 10;
-            this.label11.Text = "次數";
+            this.label11.Text = "完成次數";
             // 
             // label12
             // 
