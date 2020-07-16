@@ -210,7 +210,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
         {
             SockectCheckTh = new Thread(socketCheck);
             SockectCheckTh.Start();
-
+            SockectCheckTh.IsBackground = true;
             int i = 0;
             while (true)
             {
