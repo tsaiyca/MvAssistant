@@ -177,7 +177,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
             var c = 0;
             while (true)
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(10000);
                 try
                 {
                     if (!hasSocket)
@@ -192,8 +192,11 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
                     if (c >=2)
                     {
                         ClientSocket.Close();
+                        ClientSocket = null;
+                        // ClientSocket.Disconnect(false);
                         ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                         ClientSocket.Connect(ServerEndPoint);
+                       // hasSocket = false;
                         c = 0;
                     }
                 }
@@ -208,9 +211,9 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
     /// <summary>監聽 Server 的Method</summary>
     private void ListenFromServer()
         {
-            SockectCheckTh = new Thread(socketCheck);
-            SockectCheckTh.Start();
-            SockectCheckTh.IsBackground = true;
+          //  SockectCheckTh = new Thread(socketCheck);
+           // SockectCheckTh.Start();
+           // SockectCheckTh.IsBackground = true;
             int i = 0;
             while (true)
             {
@@ -224,7 +227,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
                     int inLine = ClientSocket.Receive(B);//從Server端回復(Listen Point)
                     //hasSocket = true;
                     string rtn = Encoding.Default.GetString(B, 0, inLine);
-                    hasSocket = true;
+                    
                     //rtn = "~001,Placement,0@\0\0\0\0";
 
                     Debug.WriteLine("[RETURN] " + rtn +", LoadPortNo=" + LoadPortNo);
@@ -236,6 +239,7 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
                         Debug.WriteLine("Rtn=EMPTY, LoadPortNo=" + LoadPortNo);
                         continue;
                     }
+                    hasSocket = true;
                     if (OnReceviceRtnFromServerHandler != null)
                     {
                         // 可能一次會有多個結果
@@ -266,7 +270,18 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
             byte[] B = Encoding.Default.GetBytes(commandText);
 #if OnlyObserveCommandText
 #else
-             ClientSocket.Send(B, 0, B.Length, SocketFlags.None);
+            while (true)
+            {
+                try
+                {
+                    ClientSocket.Send(B, 0, B.Length, SocketFlags.None);
+                    break;
+                }
+                catch (Exception e)
+                {
+                    Thread.Sleep(1000);
+                }
+            }
 #endif
         }
         #region Command
