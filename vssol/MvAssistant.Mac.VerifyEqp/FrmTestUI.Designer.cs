@@ -319,7 +319,7 @@
             // 
             this.numLoadPortATargetCycles.Location = new System.Drawing.Point(6, 48);
             this.numLoadPortATargetCycles.Maximum = new decimal(new int[] {
-            1000,
+            20000,
             0,
             0,
             0});
@@ -328,7 +328,7 @@
             this.numLoadPortATargetCycles.TabIndex = 0;
             this.numLoadPortATargetCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numLoadPortATargetCycles.Value = new decimal(new int[] {
-            500,
+            10000,
             0,
             0,
             0});
@@ -523,7 +523,7 @@
             // 
             this.numLoadPortBTargetCycles.Location = new System.Drawing.Point(12, 47);
             this.numLoadPortBTargetCycles.Maximum = new decimal(new int[] {
-            1000,
+            20000,
             0,
             0,
             0});
@@ -532,7 +532,7 @@
             this.numLoadPortBTargetCycles.TabIndex = 0;
             this.numLoadPortBTargetCycles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numLoadPortBTargetCycles.Value = new decimal(new int[] {
-            500,
+            10000,
             0,
             0,
             0});
