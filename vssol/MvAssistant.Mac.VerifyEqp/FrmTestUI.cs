@@ -866,7 +866,7 @@ namespace MvAssistantMacVerifyEqp
                             for (int j = 123; j < 261; j += 23)
                             {
                                 ic.XYPosition(i, j);
-                                ic.Camera_TopInsp_CapToSave("D:/Image/IC/TopInsp", "jpg");
+                                //ic.Camera_TopInsp_CapToSave("D:/Image/IC/TopInsp", "jpg");
                                 Thread.Sleep(500);
                             }
                         }
