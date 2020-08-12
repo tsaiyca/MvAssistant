@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -554,14 +556,14 @@ namespace MvAssistantMacVerifyEqp
 
         public void btnLoadPortADock_Click(object sender, EventArgs e)
         {
-           
+
             this.loadPorts.DisableLoadportOperate(loadPorts.LoadPort1);
             if (TestLoadPorts.Loport1CycleRunFlag)
             {
                 var times = Convert.ToInt32(txtBxLoadPortACurrentCycle.Text);
                 times++;
-               // txtBxLoadPortACurrentCycle.Text = times.ToString();
-              //  txtBxLoportAResult.Text = txtBxLoportAResult.Text + $"\r\nCycles: {times}............\r\n[DOCK]";
+                // txtBxLoadPortACurrentCycle.Text = times.ToString();
+                //  txtBxLoportAResult.Text = txtBxLoportAResult.Text + $"\r\nCycles: {times}............\r\n[DOCK]";
                 loadPorts.SetResult(loadPorts.LoadPort1, $"\r\nLoadPort[] Cycles: {times}............\r\n[DOCK]");
             }
             else
@@ -575,7 +577,7 @@ namespace MvAssistantMacVerifyEqp
         {
             if (TestLoadPorts.Loport1CycleRunFlag)
             {
-               // txtBxLoportAResult.Text = txtBxLoportAResult.Text + "\r\n[UN DOCK]";
+                // txtBxLoportAResult.Text = txtBxLoportAResult.Text + "\r\n[UN DOCK]";
                 loadPorts.SetResult(loadPorts.LoadPort1, "\r\nLoadPort[] [UN DOCK]");
             }
             else
@@ -588,14 +590,14 @@ namespace MvAssistantMacVerifyEqp
 
         public void btnLoadPortBDock_Click(object sender, EventArgs e)
         {
-          
+
             this.loadPorts.DisableLoadportOperate(loadPorts.LoadPort2);
 
             if (TestLoadPorts.Loport2CycleRunFlag)
             {
                 var times = Convert.ToInt32(txtBxLoadPortBCurrentCycle.Text);
                 times++;
-               // txtBxLoadPortBCurrentCycle.Text = times.ToString();
+                // txtBxLoadPortBCurrentCycle.Text = times.ToString();
                 //txtBxLoportBResult.Text = txtBxLoportBResult.Text + $"\r\nCycle: {times}............\r\n[DOCK]";
                 loadPorts.SetResult(loadPorts.LoadPort2, $"\r\nLoadPort[] Cycle: {times}............\r\n[DOCK]");
             }
@@ -620,8 +622,8 @@ namespace MvAssistantMacVerifyEqp
 
         public void btnLoadPortBUnDock_Click(object sender, EventArgs e)
         {
-            
-            if(TestLoadPorts.Loport2CycleRunFlag)
+
+            if (TestLoadPorts.Loport2CycleRunFlag)
             {
                 //txtBxLoportBResult.Text = txtBxLoportBResult.Text + "\r\n[UN DOCK]";
                 loadPorts.SetResult(loadPorts.LoadPort2, "\r\nLoport[] [UN DOCK]");
@@ -760,7 +762,7 @@ namespace MvAssistantMacVerifyEqp
         private void btnLoadPortBCycleStart_Click(object sender, EventArgs e)
         {
             txtBxLoadPortBCurrentCycle.Text = "0";
-           loadPorts.ResetResult(loadPorts.LoadPort2);
+            loadPorts.ResetResult(loadPorts.LoadPort2);
             TestLoadPorts.Loport2CycleRunFlag = true;
             btnLoadPortBDock_Click(btnLoadPortBDock, EventArgs.Empty);
         }
@@ -778,6 +780,138 @@ namespace MvAssistantMacVerifyEqp
         private void button2_Click(object sender, EventArgs e)
         {
             grpLoadportB.Enabled = true;
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            int Times = 0, CycleTimes = 0;
+            if (int.TryParse(txtCycleTimes.Text, out CycleTimes))
+            { CycleTimes = Convert.ToInt32(txtCycleTimes.Text); }
+            else
+            { MessageBox.Show("循環次數請輸入數字!!!"); return; }
+            try
+            {
+                using (var halContext = new MacHalContext("GenCfg/Manifest/Manifest.xml.real"))
+                {
+                    halContext.MvCfLoad();
+
+                    var unv = halContext.HalDevices[MacEnumDevice.universal_assembly.ToString()] as MacHalUniversal;
+                    var mt = halContext.HalDevices[MacEnumDevice.masktransfer_assembly.ToString()] as MacHalMaskTransfer;
+                    var os = halContext.HalDevices[MacEnumDevice.openstage_assembly.ToString()] as MacHalOpenStage;
+                    var ic = halContext.HalDevices[MacEnumDevice.inspection_assembly.ToString()] as MacHalInspectionCh;
+                    unv.HalConnect();//需要先將MacHalUniversal建立連線，各Assembly的Hal建立連線時，才能讓PLC的連線成功
+                    mt.HalConnect();
+                    os.HalConnect();
+                    ic.HalConnect();
+                    bool MTIntrude = false;
+                    if (true)
+                    {
+                        os.Initial();
+                        mt.Initial();
+                        ic.ReadRobotIntrude(false);
+                        ic.Initial();
+
+                        os.SetBoxType(2);
+                        os.SortClamp();
+                        Thread.Sleep(1000);
+                        os.SortUnclamp();
+                        os.SortClamp();
+                        Thread.Sleep(1000);
+                        os.Vacuum(true);
+                        os.SortUnclamp();
+                        os.Lock();
+                        os.Close();
+                        os.Clamp();
+                        os.Open();
+                    }
+                    for (Times = 1; Times <= CycleTimes; Times++)
+                    {
+                        //Get mask from Open Stage 
+                        for (int i = 0; i < 2; i++)
+                        {
+                            MTIntrude = os.ReadRobotIntrude(false, true).Item2;
+                            if (MTIntrude == true)
+                                break;
+                            else if (i == 1 && MTIntrude == false)
+                                throw new Exception("Open Stage not allowed to be MT intrude!!");
+                        }
+                        mt.RobotMoving(true);
+                        mt.ChangeDirection(@"D:\Positions\MTRobot\LoadPortHome.json");
+                        mt.ExePathMove(@"D:\Positions\MTRobot\LPHomeToOS.json");
+                        mt.Clamp(1);
+                        mt.ExePathMove(@"D:\Positions\MTRobot\OSToLPHome.json");
+                        mt.RobotMoving(false);
+                        for (int i = 0; i < 2; i++)
+                        {
+                            MTIntrude = os.ReadRobotIntrude(false, false).Item2;
+                            if (i == 1 && MTIntrude == true || os.ReadBeenIntruded() == true)
+                                throw new Exception("Open Stage has been MT intrude,can net execute command!!");
+                        }
+
+                        //Put glass side into Inspection Chamber
+                        //ic.Initial();
+                        ic.ReadRobotIntrude(false);
+                        ic.XYPosition(0, 0);
+                        ic.WPosition(0);
+                        ic.ReadRobotIntrude(true);
+                        mt.ChangeDirection(@"D:\Positions\MTRobot\InspChHome.json");
+                        mt.ExePathMove(@"D:\Positions\MTRobot\ICHomeFrontSideToIC.json");
+                        mt.Unclamp();
+                        mt.ExePathMove(@"D:\Positions\MTRobot\ICFrontSideToICHome.json");
+                        ic.ReadRobotIntrude(false);
+                        //Get glass side from Inspection Chamber
+                        ic.ZPosition(-29.6);
+                        for (int i = 158; i < 296; i += 23)
+                        {
+                            for (int j = 123; j < 261; j += 23)
+                            {
+                                ic.XYPosition(i, j);
+                                ic.Camera_TopInsp_CapToSave("D:/Image/IC/TopInsp", "jpg");
+                                Thread.Sleep(500);
+                            }
+                        }
+                        ic.XYPosition(246, 208);
+                        for (int i = 0; i < 360; i += 90)
+                        {
+                            ic.WPosition(i);
+                            ic.Camera_SideInsp_CapToSave("D:/Image/IC/SideInsp", "jpg");
+                            Thread.Sleep(500);
+                        }
+
+                        ic.XYPosition(0, 0);
+                        ic.WPosition(0);
+                        ic.ReadRobotIntrude(true);
+                        mt.ChangeDirection(@"D:\Positions\MTRobot\InspChHome.json");
+                        mt.ExePathMove(@"D:\Positions\MTRobot\ICHomeFrontSideToIC.json");
+                        mt.Clamp(1);
+                        mt.ExePathMove(@"D:\Positions\MTRobot\ICFrontSideToICHome.json");
+                        ic.ReadRobotIntrude(false);
+
+                        //Release mask to Open Stage
+                        for (int i = 0; i < 2; i++)
+                        {
+                            MTIntrude = os.ReadRobotIntrude(false, true).Item2;
+                            if (MTIntrude == true)
+                                break;
+                            else if (i == 1 && MTIntrude == false)
+                                throw new Exception("Open Stage not allowed to be MT intrude!!");
+                        }
+                        mt.RobotMoving(true);
+                        mt.ChangeDirection(@"D:\Positions\MTRobot\LoadPortHome.json");
+                        mt.ExePathMove(@"D:\Positions\MTRobot\LPHomeToOS.json");
+                        mt.Unclamp();
+                        mt.ExePathMove(@"D:\Positions\MTRobot\OSToLPHome.json");
+                        mt.RobotMoving(false);
+                        for (int i = 0; i < 2; i++)
+                        {
+                            MTIntrude = os.ReadRobotIntrude(false, false).Item2;
+                            if (i == 1 && MTIntrude == true || os.ReadBeenIntruded() == true)
+                                throw new Exception("Open Stage has been MT intrude,can net execute command!!");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("在執行第 " + Times + " 次程式時發生錯誤。"); throw ex; }
         }
     }
 

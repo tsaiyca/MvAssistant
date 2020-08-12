@@ -130,7 +130,7 @@
             this.btnInitialDrawerA = new System.Windows.Forms.Button();
             this.chkBoxDrawerAHasbox = new System.Windows.Forms.CheckBox();
             this.txtBxDetectDrawerA = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.TabPageBoxTransfer = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.txtDrawerRow = new System.Windows.Forms.TextBox();
             this.txtDrawerColumn = new System.Windows.Forms.TextBox();
@@ -143,6 +143,10 @@
             this.txtBoxType = new System.Windows.Forms.TextBox();
             this.BTPutDR = new System.Windows.Forms.Button();
             this.BTGetDR = new System.Windows.Forms.Button();
+            this.TabPageMaskTransfer = new System.Windows.Forms.TabPage();
+            this.lblCycleTimes = new System.Windows.Forms.Label();
+            this.txtCycleTimes = new System.Windows.Forms.TextBox();
+            this.btnStart = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TabPageDrawerAndLoadPort.SuspendLayout();
             this.grpLoadPorts.SuspendLayout();
@@ -165,13 +169,15 @@
             this.grpDrawerBComp.SuspendLayout();
             this.GrpDrawerA.SuspendLayout();
             this.grpDrawerAComp.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.TabPageBoxTransfer.SuspendLayout();
+            this.TabPageMaskTransfer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.TabPageDrawerAndLoadPort);
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.TabPageBoxTransfer);
+            this.tabControl1.Controls.Add(this.TabPageMaskTransfer);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1357,28 +1363,28 @@
             this.txtBxDetectDrawerA.UseVisualStyleBackColor = true;
             this.txtBxDetectDrawerA.Click += new System.EventHandler(this.txtBxDetectDrawerA_Click);
             // 
-            // tabPage1
+            // TabPageBoxTransfer
             // 
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.txtDrawerRow);
-            this.tabPage1.Controls.Add(this.txtDrawerColumn);
-            this.tabPage1.Controls.Add(this.lblDrawer);
-            this.tabPage1.Controls.Add(this.Lock);
-            this.tabPage1.Controls.Add(this.Unlock);
-            this.tabPage1.Controls.Add(this.BTGetOS);
-            this.tabPage1.Controls.Add(this.BTPutOS);
-            this.tabPage1.Controls.Add(this.lblBoxType);
-            this.tabPage1.Controls.Add(this.txtBoxType);
-            this.tabPage1.Controls.Add(this.BTPutDR);
-            this.tabPage1.Controls.Add(this.BTGetDR);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1559, 713);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "BoxTransfer";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            this.TabPageBoxTransfer.Controls.Add(this.label8);
+            this.TabPageBoxTransfer.Controls.Add(this.txtDrawerRow);
+            this.TabPageBoxTransfer.Controls.Add(this.txtDrawerColumn);
+            this.TabPageBoxTransfer.Controls.Add(this.lblDrawer);
+            this.TabPageBoxTransfer.Controls.Add(this.Lock);
+            this.TabPageBoxTransfer.Controls.Add(this.Unlock);
+            this.TabPageBoxTransfer.Controls.Add(this.BTGetOS);
+            this.TabPageBoxTransfer.Controls.Add(this.BTPutOS);
+            this.TabPageBoxTransfer.Controls.Add(this.lblBoxType);
+            this.TabPageBoxTransfer.Controls.Add(this.txtBoxType);
+            this.TabPageBoxTransfer.Controls.Add(this.BTPutDR);
+            this.TabPageBoxTransfer.Controls.Add(this.BTGetDR);
+            this.TabPageBoxTransfer.Location = new System.Drawing.Point(4, 22);
+            this.TabPageBoxTransfer.Name = "TabPageBoxTransfer";
+            this.TabPageBoxTransfer.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPageBoxTransfer.Size = new System.Drawing.Size(1559, 713);
+            this.TabPageBoxTransfer.TabIndex = 2;
+            this.TabPageBoxTransfer.Text = "BoxTransfer";
+            this.TabPageBoxTransfer.UseVisualStyleBackColor = true;
+            this.TabPageBoxTransfer.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // label8
             // 
@@ -1498,6 +1504,44 @@
             this.BTGetDR.UseVisualStyleBackColor = true;
             this.BTGetDR.Click += new System.EventHandler(this.BTGetDR_Click);
             // 
+            // TabPageMaskTransfer
+            // 
+            this.TabPageMaskTransfer.Controls.Add(this.btnStart);
+            this.TabPageMaskTransfer.Controls.Add(this.txtCycleTimes);
+            this.TabPageMaskTransfer.Controls.Add(this.lblCycleTimes);
+            this.TabPageMaskTransfer.Location = new System.Drawing.Point(4, 22);
+            this.TabPageMaskTransfer.Name = "TabPageMaskTransfer";
+            this.TabPageMaskTransfer.Size = new System.Drawing.Size(1559, 713);
+            this.TabPageMaskTransfer.TabIndex = 3;
+            this.TabPageMaskTransfer.Text = "MaskTransfer";
+            this.TabPageMaskTransfer.UseVisualStyleBackColor = true;
+            // 
+            // lblCycleTimes
+            // 
+            this.lblCycleTimes.AutoSize = true;
+            this.lblCycleTimes.Location = new System.Drawing.Point(44, 36);
+            this.lblCycleTimes.Name = "lblCycleTimes";
+            this.lblCycleTimes.Size = new System.Drawing.Size(56, 12);
+            this.lblCycleTimes.TabIndex = 0;
+            this.lblCycleTimes.Text = "循環次數:";
+            // 
+            // txtCycleTimes
+            // 
+            this.txtCycleTimes.Location = new System.Drawing.Point(106, 31);
+            this.txtCycleTimes.Name = "txtCycleTimes";
+            this.txtCycleTimes.Size = new System.Drawing.Size(100, 22);
+            this.txtCycleTimes.TabIndex = 1;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(46, 77);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "開始執行";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
             // FrmTestUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1538,8 +1582,10 @@
             this.GrpDrawerA.ResumeLayout(false);
             this.grpDrawerAComp.ResumeLayout(false);
             this.grpDrawerAComp.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.TabPageBoxTransfer.ResumeLayout(false);
+            this.TabPageBoxTransfer.PerformLayout();
+            this.TabPageMaskTransfer.ResumeLayout(false);
+            this.TabPageMaskTransfer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1553,7 +1599,7 @@
         private System.Windows.Forms.GroupBox GrpDrawerC;
         private System.Windows.Forms.GroupBox GrpDrawerB;
         private System.Windows.Forms.GroupBox GrpDrawerA;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage TabPageBoxTransfer;
         private System.Windows.Forms.TextBox txtBxDrawerIPA;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnInitialDrawerA;
@@ -1661,5 +1707,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TabPage TabPageMaskTransfer;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.TextBox txtCycleTimes;
+        private System.Windows.Forms.Label lblCycleTimes;
     }
 }
