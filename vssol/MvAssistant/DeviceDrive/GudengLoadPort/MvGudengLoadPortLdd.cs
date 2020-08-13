@@ -17,10 +17,9 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
 {
     public class MvGudengLoadPortLdd
     {
-
-     //   public bool hasSocket = default(bool);
+       
         public  delegate string OriginalInvokeMethod() ;
-      
+       public string Index { get; set; }
         private  OriginalInvokeMethod DelgateOriginalMethod=null;
         public void InvokeOriginalMethod()
         {
@@ -92,18 +91,26 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
         /// <summary>Server 端 End point</summary>
         public IPEndPoint ServerEndPoint { get; private set; }
         /// <summary>本地端要送資料到 Server 端的 Client 物件</summary>
-        private Socket ClientSocket = null;
+        public Socket ClientSocket = null;
         /// <summary>是否已監聽 Server </summary>
 #if OnlyObserveCommandText
-
         public bool IsListenServer
         {
             get { return true; }
             set { }
         }
 #else
+        ///<summary>是否已完成監聽, 這個變數為 false 時, 均無法送出指令 </summary>
         public bool IsListenServer { get; private set; }
+
 #endif
+
+
+
+
+
+
+
         /// <summary>Client(本地端) 端監 Server</summary>
         public Thread ThreadClientListen = null;
         /// <summary>收到 Server 端傳回資料時的事件處理程序</summary>
@@ -134,6 +141,11 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
 
         }
 
+        public MvGudengLoadPortLdd(string serverIP, int serverPort, string index) : this()
+        {
+            ServerEndPoint = new IPEndPoint(IPAddress.Parse(serverIP), serverPort);
+            Index = index;
+        }
         /// <summary>Client(本地)端 Listen 收到 Server 端回傳資料後引發的事件程序</summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -155,133 +167,104 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
         }
 
         /// <summary>啟動監聽 Server 端的 Thread</summary>
-        public void StartListenServerThread()
+        public bool StartListenServerThread()
         {
             try
             {
-                ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                ClientSocket.Connect(ServerEndPoint);
-                ThreadClientListen = new Thread(ListenFromServer);
-                ThreadClientListen.Start();
-                IsListenServer = true;
-                ThreadClientListen.IsBackground = true;
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-        bool hasSocket = false;
-        void socketCheck()
-        {
-            var c = 0;
-            while (true)
-            {
-                Thread.Sleep(10000);
+              
                 try
                 {
-                    if (!hasSocket)
-                    {
-                        c++;
-
-                    }
-                    else
-                    {
-                        c = 0;
-                    }
-                    if (c >=2)
-                    {
-                        ClientSocket.Close();
-                        ClientSocket = null;
-                        // ClientSocket.Disconnect(false);
-                        ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                        ClientSocket.Connect(ServerEndPoint);
-                       // hasSocket = false;
-                        c = 0;
-                    }
+                    ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    //ClientSocket.Disconnect(true);
+                    Debug.WriteLine("Load Port Connecting " + ServerEndPoint.Address.ToString() + " " + DateTime.Now.ToString());
+                    //ClientSocket.
+                    ClientSocket.Connect(ServerEndPoint);
                 }
                 catch (Exception ex)
                 {
+                    Debug.WriteLine("Load Port Re-Connect " + ServerEndPoint.Address.ToString() + " " + DateTime.Now.ToString());
 
+                    ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    ClientSocket.Connect(ServerEndPoint);
                 }
+              
+                ThreadClientListen = new Thread(ListenFromServer);
+                ThreadClientListen.IsBackground = true;
+                ThreadClientListen.Start();
+                IsListenServer = true;
+                Debug.WriteLine("Load Port Connected " + ServerEndPoint.Address.ToString() + " " + DateTime.Now.ToString());
             }
+            catch (Exception ex)
+            {
+                IsListenServer = false;
+                Debug.WriteLine("Load Port Connect Fail " + ServerEndPoint.Address.ToString() + " " + DateTime.Now.ToString());
+            }
+            return IsListenServer;
         }
-        Thread SockectCheckTh;
 
-    /// <summary>監聽 Server 的Method</summary>
-    private void ListenFromServer()
+        /// <summary>監聽 Server 的Method</summary>
+        private void ListenFromServer()
         {
-          //  SockectCheckTh = new Thread(socketCheck);
-           // SockectCheckTh.Start();
-           // SockectCheckTh.IsBackground = true;
-            int i = 0;
+            int rtnEmptyCount = 0;
             while (true)
             {
-
-                
-                byte[] B = new byte[1023];
                 try
                 {
-                    hasSocket = false;
-                    //hasSocket = false;
+                    byte[] B = new byte[1023];
                     int inLine = ClientSocket.Receive(B);//從Server端回復(Listen Point)
-                    //hasSocket = true;
                     string rtn = Encoding.Default.GetString(B, 0, inLine);
-                    
+
                     //rtn = "~001,Placement,0@\0\0\0\0";
 
-                    Debug.WriteLine("[RETURN] " + rtn +", LoadPortNo=" + LoadPortNo);
-
+                    Debug.WriteLine("[RETURN] " + rtn);
+                    
                     rtn = rtn.Replace("\0", "");
-                    if (string.IsNullOrEmpty(rtn.Trim()))
-                    {
-                       
-                        Debug.WriteLine("Rtn=EMPTY, LoadPortNo=" + LoadPortNo);
+                  
+                    if (string.IsNullOrEmpty(rtn) )
+                    {  // 忽然斷線(將一直收到空白 50 次視為遺失連線)
+                        if (++rtnEmptyCount > 50 && OnHostLostTcpServerHandler != null  )
+                        {
+                            OnHostLostTcpServerHandler.Invoke(this, EventArgs.Empty);
+                            break;
+                        }
+                        System.Threading.Thread.Sleep(100);
                         continue;
                     }
-                    hasSocket = true;
+                    else
+                    {
+                        rtnEmptyCount = 0;
+                    }
                     if (OnReceviceRtnFromServerHandler != null)
                     {
                         // 可能一次會有多個結果
                         var rtnAry = rtn.Split(new string[] { BaseHostToLoadPortCommand.CommandPostfixText }, StringSplitOptions.RemoveEmptyEntries);
                         foreach (var element in rtnAry)
                         {
-                            Thread.Sleep(10);
                             var eventArgs = new OnReceviceRtnFromServerEventArgs(element);
                             OnReceviceRtnFromServerHandler.Invoke(this, eventArgs);
                         }
                     }
-
                 }
                 catch(Exception ex)
                 {
-                    Debug.WriteLine("Exception=" + ex.Message +", LoadPortNo=" + LoadPortNo);
+
                 }
-              //  Thread.Sleep(20);
-                
             }
         }
+
+        /// <summary>連線後遺失Host 和 TCP Server 間的連線</summary>
+        public event EventHandler OnHostLostTcpServerHandler;
+     //   public event EventHandler OnHostCannotConnectToTcpServerHandler;
 
         /// <summary>送出 指令</summary>
         /// <param name="commandText">指令</param>
         private void Send(string commandText)
         {
-            Debug.WriteLine("[COMMAND]" + commandText + ", LoadPortNo=" + LoadPortNo);
+           // Debug.WriteLine("[COMMAND]" + commandText);
             byte[] B = Encoding.Default.GetBytes(commandText);
 #if OnlyObserveCommandText
 #else
-            while (true)
-            {
-                try
-                {
-                    ClientSocket.Send(B, 0, B.Length, SocketFlags.None);
-                    break;
-                }
-                catch (Exception e)
-                {
-                    Thread.Sleep(1000);
-                }
-            }
+             ClientSocket.Send(B, 0, B.Length, SocketFlags.None);
 #endif
         }
         #region Command
@@ -567,7 +550,11 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
             }
             return command;
         }
+       
+        
         #endregion
+
+
         #region event
 
         /// <summary>Event Placement (001)</summary>
@@ -1098,10 +1085,10 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
         /// <remarks>ClamerLock完成後位置錯誤</remarks>
         public void ClamperLockPositionFailed(ReturnFromServer rtnFromServer)
         {
-            if (OnClamperLockPositionFailed != null) { OnClamperLockPositionFailed.Invoke(this, EventArgs.Empty); }
+            if (OnClamperLockPositionFailedHandler != null) { OnClamperLockPositionFailedHandler.Invoke(this, EventArgs.Empty); }
         }
-        public event EventHandler OnClamperLockPositionFailed = null;
-        public void ResetOnClamperLockPositionFailed() { OnClamperLockPositionFailed = null; }
+        public event EventHandler OnClamperLockPositionFailedHandler = null;
+        public void ResetOnClamperLockPositionFailed() { OnClamperLockPositionFailedHandler = null; }
 
 
         /// <summary>Alarm PODPresentAbnormality(208)</summary>
@@ -1119,11 +1106,11 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
         /// <remarks>Clamper開合馬達驅動器異常</remarks>
         public void ClamperMotorAbnormality(ReturnFromServer rtnFromServer)
         {
-            if (OnClamperMotorAbnormality != null) { OnClamperMotorAbnormality.Invoke(this, EventArgs.Empty); }
+            if (OnClamperMotorAbnormalityHandler != null) { OnClamperMotorAbnormalityHandler.Invoke(this, EventArgs.Empty); }
         }
-        public event EventHandler OnClamperMotorAbnormality = null;
+        public event EventHandler OnClamperMotorAbnormalityHandler = null;
         public void ResetOnClamperMotorAbnormality()
-        { OnClamperMotorAbnormality = null; }
+        { OnClamperMotorAbnormalityHandler = null; }
 
 
         /// <summary>Alarm StageMotorAbnormality(210)</summary>
@@ -1131,10 +1118,10 @@ namespace MvAssistant.DeviceDrive.GudengLoadPort
         /// <remarks>Stage升降馬達驅動器異常</remarks>
         public void StageMotorAbnormality(ReturnFromServer rtnFromServer)
         {
-            if (OnStageMotorAbnormality != null) { OnStageMotorAbnormality.Invoke(this, EventArgs.Empty); }
+            if (OnStageMotorAbnormalityHandler != null) { OnStageMotorAbnormalityHandler.Invoke(this, EventArgs.Empty); }
         }
-        public event EventHandler OnStageMotorAbnormality = null;
-        public void ResetOnStageMotorAbnormality() { OnStageMotorAbnormality = null; }
+        public event EventHandler OnStageMotorAbnormalityHandler = null;
+        public void ResetOnStageMotorAbnormality() { OnStageMotorAbnormalityHandler = null; }
 #endregion
 
 

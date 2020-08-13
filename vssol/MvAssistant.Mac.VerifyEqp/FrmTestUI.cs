@@ -522,7 +522,8 @@ namespace MvAssistantMacVerifyEqp
         {
             drawers.InitialDRawer(drawers.DrawerC);
             drawers.DisableDrawerComps(drawers.DrawerC);
-            drawers.DrawerC.CommandTrayMotionIn();
+            string commandText = drawers.DrawerC.CommandTrayMotionIn();
+            Debug.WriteLine("Drawer Rtn= " + commandText);
         }
 
         private void btnMoveDrawerAIn_Click(object sender, EventArgs e)
@@ -640,7 +641,9 @@ namespace MvAssistantMacVerifyEqp
         {
             drawers.InitialDRawer(drawers.DrawerC);
             drawers.DisableDrawerComps(drawers.DrawerC);
-            drawers.DrawerC.CommandTrayMotionOut();
+            var commandText=drawers.DrawerC.CommandTrayMotionOut();
+            Debug.WriteLine("Drawer Rtn = " + commandText);
+
         }
 
         private void btnMoveDrawerDOut_Click(object sender, EventArgs e)
@@ -826,6 +829,7 @@ namespace MvAssistantMacVerifyEqp
                     }
                     for (Times = 1; Times <= CycleTimes; Times++)
                     {
+                        txtTimes.Text = Times.ToString();
                         //Get mask from Open Stage 
                         for (int i = 0; i < 2; i++)
                         {
@@ -861,12 +865,12 @@ namespace MvAssistantMacVerifyEqp
                         ic.ReadRobotIntrude(false);
                         //Get glass side from Inspection Chamber
                         ic.ZPosition(-29.6);
-                        for (int i = 158; i < 296; i += 23)
+                        for (int i = 158; i <= 296; i += 23)
                         {
-                            for (int j = 123; j < 261; j += 23)
+                            for (int j = 123; j <= 261; j += 23)
                             {
                                 ic.XYPosition(i, j);
-                                //ic.Camera_TopInsp_CapToSave("D:/Image/IC/TopInsp", "jpg");
+                                ic.Camera_TopInsp_CapToSave("D:/Image/IC/TopInsp", "bmp");
                                 Thread.Sleep(500);
                             }
                         }
@@ -874,7 +878,7 @@ namespace MvAssistantMacVerifyEqp
                         for (int i = 0; i < 360; i += 90)
                         {
                             ic.WPosition(i);
-                            ic.Camera_SideInsp_CapToSave("D:/Image/IC/SideInsp", "jpg");
+                            ic.Camera_SideInsp_CapToSave("D:/Image/IC/SideInsp", "bmp");
                             Thread.Sleep(500);
                         }
 
@@ -912,6 +916,52 @@ namespace MvAssistantMacVerifyEqp
                 }
             }
             catch (Exception ex) { MessageBox.Show("在執行第 " + Times + " 次程式時發生錯誤。"); throw ex; }
+        }
+
+        private void TabPageDrawerAndLoadPort_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmTestUI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                loadPorts.LoadPort1.ClientSocket.Close();
+            }
+            catch(Exception exx)
+            {
+
+            }
+            try
+            {
+                loadPorts.LoadPort2.ClientSocket.Close();
+            } 
+            catch(Exception ex)
+            {
+
+            }
+
+        }
+
+        private void FrmTestUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                loadPorts.LoadPort1.ClientSocket.Close();
+            }
+            catch (Exception exx)
+            {
+
+            }
+            try
+            {
+                loadPorts.LoadPort2.ClientSocket.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 

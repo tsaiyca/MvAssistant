@@ -106,7 +106,7 @@ namespace MvAssistant.Mac.v1_0.Hal.Assembly
                     //如果目前位置不在InspCh且要移動的目的地也不是InspCh，則需要先經過InspCh點位再移動到目的地
                     if (StartPosName != "Inspection Chamber" && EndPosName != "Inspection Chamber")
                     {
-                        PosList.Insert(0,ICHome);
+                        PosList.Insert(0, ICHome);
                         Robot.ExePosMove(PosList);
                     }
                     else
@@ -115,7 +115,7 @@ namespace MvAssistant.Mac.v1_0.Hal.Assembly
                     }
                 }
                 else if (EndPosName == StartPosName)
-                    throw new Exception("End position as same as current position !!");
+                    return;//throw new Exception("End position as same as current position !!");
                 else
                     throw new Exception("Unknown end position !!");
             }

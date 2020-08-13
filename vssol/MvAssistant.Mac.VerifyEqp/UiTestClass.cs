@@ -38,13 +38,14 @@ namespace MvAssistantMacVerifyEqp
             InitialDrawers();
             BindEvent();
             ldd.ListenSystStartUpEvent();
+            Debug.WriteLine("Drawer Console IP: " + LocalIP);
         }
         public const int RemotePort = 5000;
-        public const string LocalIP = "192.168.0.14";
-        public const string ClientIP_A = "192.168.0.34";
-        public const string ClientIP_B = "192.168.0.42";
-        public const string ClientIP_C = "192.168.0.50";
-        public const string ClientIP_D = "192.168.0.54";
+        public const string LocalIP = "192.168.0.11"; // Drawer Modify
+        public const string ClientIP_A = "192.168.0.31";
+        public const string ClientIP_B = "192.168.0.32";
+        public const string ClientIP_C = "192.168.0.33";
+        public const string ClientIP_D = "192.168.0.41";
         public  MvKjMachineDrawerLdd DrawerA = null;
         public  MvKjMachineDrawerLdd DrawerB = null;
         public  MvKjMachineDrawerLdd DrawerC = null;
@@ -447,6 +448,10 @@ namespace MvAssistantMacVerifyEqp
         int LoadPportAPort = 1024;
         string LoadPortBIP = "192.168.0.21";
         int LoadportBPort = 1024;
+        public void Close()
+        {
+            
+        }
         private TestLoadPorts()
         {
 
@@ -455,8 +460,9 @@ namespace MvAssistantMacVerifyEqp
             LoadPort2 = ldd.CreateLoadPort(LoadPortBIP, LoadportBPort, 2);
             BindEventHandler();
 
-            LoadPort1.StartListenServerThread();
-            LoadPort2.StartListenServerThread();
+            LoadPort1.StartListenServerThread();// LoadPort A  Modify
+            LoadPort2.StartListenServerThread();// LoadPort B Modify
+            
         }
 
         public TestLoadPorts(FrmTestUI myForm) : this()
@@ -473,8 +479,8 @@ namespace MvAssistantMacVerifyEqp
                 loadport.OnClamperActionTimeOutHandler += this.OnClamperActionTimeOut;// 200
                 loadport.OnClamperHandler += this.OnClamper;//003
                 loadport.OnClamperUnlockCompleteHandler += this.OnClamperUnlockComplete;//012
-                loadport.OnClamperLockPositionFailed += this.OnClamperLockPositionFailed;//207
-                loadport.OnClamperMotorAbnormality += this.OnClamperMotorAbnormality;//209
+                //loadport.OnClamperLockPositionFailed += this.OnClamperLockPositionFailed;//207
+                //loadport.OnClamperMotorAbnormality += this.OnClamperMotorAbnormality;//209
                 loadport.OnClamperNotLockHandler += this.OnClamperNotLock;//022
                 loadport.OnClamperLockCompleteHandler += this.OnClamperLockComplete;//006
                 loadport.OnClamperUnlockPositionFailedHandler += this.OnClamperUnlockPositionFailed;//201
@@ -494,7 +500,7 @@ namespace MvAssistantMacVerifyEqp
                 loadport.OnReticlePositionAbnormalityHandler += this.OnReticlePositionAbnormality;//206
                 loadport.OnRFIDHandler += this.OnRFID;//004
                 loadport.OnStageMotionTimeoutHandler += this.OnStageMotionTimeout;//203
-                loadport.OnStageMotorAbnormality += this.OnStageMotorAbnormality;//210
+                //loadport.OnStageMotorAbnormality += this.OnStageMotorAbnormality;//210
                 loadport.OnStageOverDownLimitationHandler += this.OnStageOverDownLimitation;//205
                 loadport.OnStageOverUpLimitationHandler += this.OnStageOverUpLimitation;//204
                 loadport.OnStagePositionHandler += this.OnStagePosition;//017

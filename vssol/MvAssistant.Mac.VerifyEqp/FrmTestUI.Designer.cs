@@ -144,9 +144,11 @@
             this.BTPutDR = new System.Windows.Forms.Button();
             this.BTGetDR = new System.Windows.Forms.Button();
             this.TabPageMaskTransfer = new System.Windows.Forms.TabPage();
-            this.lblCycleTimes = new System.Windows.Forms.Label();
-            this.txtCycleTimes = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
+            this.txtCycleTimes = new System.Windows.Forms.TextBox();
+            this.lblCycleTimes = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtTimes = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.TabPageDrawerAndLoadPort.SuspendLayout();
             this.grpLoadPorts.SuspendLayout();
@@ -196,6 +198,7 @@
             this.TabPageDrawerAndLoadPort.TabIndex = 0;
             this.TabPageDrawerAndLoadPort.Text = "Drawers & LoadPorts";
             this.TabPageDrawerAndLoadPort.UseVisualStyleBackColor = true;
+            this.TabPageDrawerAndLoadPort.Click += new System.EventHandler(this.TabPageDrawerAndLoadPort_Click);
             // 
             // grpLoadPorts
             // 
@@ -431,7 +434,7 @@
             this.grpLoadportB.Size = new System.Drawing.Size(583, 247);
             this.grpLoadportB.TabIndex = 0;
             this.grpLoadportB.TabStop = false;
-            this.grpLoadportB.Text = "Load port B(192.168.0.21)";
+            this.grpLoadportB.Text = "Load port B(192.168.0.32)";
             // 
             // groupBox4
             // 
@@ -780,7 +783,7 @@
             this.GrpDrawerD.Size = new System.Drawing.Size(533, 164);
             this.GrpDrawerD.TabIndex = 3;
             this.GrpDrawerD.TabStop = false;
-            this.GrpDrawerD.Text = "D(192.168.0.54)";
+            this.GrpDrawerD.Text = "D(192.168.0.41)";
             // 
             // grpDrawerDComp
             // 
@@ -871,7 +874,7 @@
             this.txtBxDrawerIPD.ReadOnly = true;
             this.txtBxDrawerIPD.Size = new System.Drawing.Size(188, 22);
             this.txtBxDrawerIPD.TabIndex = 0;
-            this.txtBxDrawerIPD.Text = "192.168.0.54";
+            this.txtBxDrawerIPD.Text = "192.168.0.41";
             // 
             // btnMoveDrawerDHome
             // 
@@ -928,7 +931,7 @@
             this.GrpDrawerC.Size = new System.Drawing.Size(518, 171);
             this.GrpDrawerC.TabIndex = 2;
             this.GrpDrawerC.TabStop = false;
-            this.GrpDrawerC.Text = "C(192.168.0.50)";
+            this.GrpDrawerC.Text = "C(192.168.0.33)";
             // 
             // grpDrawerCComp
             // 
@@ -1019,7 +1022,7 @@
             this.txtBxDrawerIPC.ReadOnly = true;
             this.txtBxDrawerIPC.Size = new System.Drawing.Size(182, 22);
             this.txtBxDrawerIPC.TabIndex = 0;
-            this.txtBxDrawerIPC.Text = "192.168.0.50";
+            this.txtBxDrawerIPC.Text = "192.168.0.33";
             // 
             // btnMoveDrawerCHome
             // 
@@ -1076,7 +1079,7 @@
             this.GrpDrawerB.Size = new System.Drawing.Size(533, 170);
             this.GrpDrawerB.TabIndex = 1;
             this.GrpDrawerB.TabStop = false;
-            this.GrpDrawerB.Text = "B(192.168.0.42)";
+            this.GrpDrawerB.Text = "B(192.168.0.32)";
             // 
             // grpDrawerBComp
             // 
@@ -1167,7 +1170,7 @@
             this.txtBxDrawerIPB.ReadOnly = true;
             this.txtBxDrawerIPB.Size = new System.Drawing.Size(188, 22);
             this.txtBxDrawerIPB.TabIndex = 0;
-            this.txtBxDrawerIPB.Text = "192.168.0.42";
+            this.txtBxDrawerIPB.Text = "192.168.0.32";
             // 
             // btnMoveDrawerBHome
             // 
@@ -1224,7 +1227,7 @@
             this.GrpDrawerA.Size = new System.Drawing.Size(518, 170);
             this.GrpDrawerA.TabIndex = 0;
             this.GrpDrawerA.TabStop = false;
-            this.GrpDrawerA.Text = "A(192.168.0.34)";
+            this.GrpDrawerA.Text = "A(192.168.0.31)";
             this.GrpDrawerA.Enter += new System.EventHandler(this.GrpDrawerA_Enter);
             // 
             // grpDrawerAComp
@@ -1316,7 +1319,7 @@
             this.txtBxDrawerIPA.ReadOnly = true;
             this.txtBxDrawerIPA.Size = new System.Drawing.Size(179, 22);
             this.txtBxDrawerIPA.TabIndex = 0;
-            this.txtBxDrawerIPA.Text = "192.168.0.34";
+            this.txtBxDrawerIPA.Text = "192.168.0.31";
             // 
             // btnMoveDrawerAHome
             // 
@@ -1506,6 +1509,8 @@
             // 
             // TabPageMaskTransfer
             // 
+            this.TabPageMaskTransfer.Controls.Add(this.txtTimes);
+            this.TabPageMaskTransfer.Controls.Add(this.label6);
             this.TabPageMaskTransfer.Controls.Add(this.btnStart);
             this.TabPageMaskTransfer.Controls.Add(this.txtCycleTimes);
             this.TabPageMaskTransfer.Controls.Add(this.lblCycleTimes);
@@ -1516,6 +1521,23 @@
             this.TabPageMaskTransfer.Text = "MaskTransfer";
             this.TabPageMaskTransfer.UseVisualStyleBackColor = true;
             // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(46, 135);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "開始執行";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // txtCycleTimes
+            // 
+            this.txtCycleTimes.Location = new System.Drawing.Point(106, 31);
+            this.txtCycleTimes.Name = "txtCycleTimes";
+            this.txtCycleTimes.Size = new System.Drawing.Size(100, 22);
+            this.txtCycleTimes.TabIndex = 1;
+            // 
             // lblCycleTimes
             // 
             this.lblCycleTimes.AutoSize = true;
@@ -1525,22 +1547,22 @@
             this.lblCycleTimes.TabIndex = 0;
             this.lblCycleTimes.Text = "循環次數:";
             // 
-            // txtCycleTimes
+            // label6
             // 
-            this.txtCycleTimes.Location = new System.Drawing.Point(106, 31);
-            this.txtCycleTimes.Name = "txtCycleTimes";
-            this.txtCycleTimes.Size = new System.Drawing.Size(100, 22);
-            this.txtCycleTimes.TabIndex = 1;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(44, 91);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(143, 12);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "正在執行第                      次";
             // 
-            // btnStart
+            // txtTimes
             // 
-            this.btnStart.Location = new System.Drawing.Point(46, 77);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
-            this.btnStart.TabIndex = 2;
-            this.btnStart.Text = "開始執行";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.txtTimes.Location = new System.Drawing.Point(113, 86);
+            this.txtTimes.Name = "txtTimes";
+            this.txtTimes.ReadOnly = true;
+            this.txtTimes.Size = new System.Drawing.Size(52, 22);
+            this.txtTimes.TabIndex = 4;
             // 
             // FrmTestUI
             // 
@@ -1550,6 +1572,8 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "FrmTestUI";
             this.Text = "FrmTestUI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmTestUI_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmTestUI_FormClosed);
             this.Load += new System.EventHandler(this.FrmTestUI_Load);
             this.tabControl1.ResumeLayout(false);
             this.TabPageDrawerAndLoadPort.ResumeLayout(false);
@@ -1711,5 +1735,7 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.TextBox txtCycleTimes;
         private System.Windows.Forms.Label lblCycleTimes;
+        private System.Windows.Forms.TextBox txtTimes;
+        private System.Windows.Forms.Label label6;
     }
 }

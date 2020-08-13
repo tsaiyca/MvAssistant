@@ -83,11 +83,15 @@
     <Compile Include="Hal\Assembly\MacHalMaskTransfer.cs" />
     <Compile Include="Hal\Assembly\MacHalOpenStage.cs" />
     <Compile Include="Hal\Assembly\MacHalUniversal.cs" />
+    <Compile Include="Hal\CompCamera\MacHalCameraLink.cs" />
+    <Compile Include="Hal\CompCamera\MacHalCameraSenTech.cs" />
     <Compile Include="Hal\CompDrawer\MacHalDrawerKjMachine.cs" />
     <Compile Include="Hal\CompDrawer\IMacHalDrawer.cs" />
     <Compile Include="Hal\CompLight\MacHalLightLeimac.cs" />
     <Compile Include="Hal\CompLight\IMacHalLight.cs" />
     <Compile Include="Hal\CompLoadPort\IMacHalLoadPortCell.cs" />
+    <Compile Include="Hal\CompLoadPort\IMacHalLoadPortComp.cs" />
+    <Compile Include="Hal\CompLoadPort\MacHalGudengLoadPort.cs" />
     <Compile Include="Hal\CompLoadPort\MacHalLoadPortCellGudeng.cs" />
     <Compile Include="Hal\CompRobot\HalRobotPath.cs" />
     <Compile Include="Hal\CompRobot\HalRobotEnumMotionType.cs" />
@@ -128,7 +132,6 @@
     <Compile Include="Hal\CompRobotTest\MacHalMaskRobotFanuc.cs" />
     <Compile Include="Hal\CompRobotTest\MacHalRobotMotionInfo.cs" />
     <Compile Include="Hal\CompCamera\HalCameraFake.cs" />
-    <Compile Include="Hal\CompCamera\HalCameraSenTech.cs" />
     <Compile Include="Hal\CompCamera\IHalCamera.cs" />
     <Compile Include="ImgProc\MacImgProcBase.cs" />
     <Compile Include="JSon\BTRobotPath.cs" />
