@@ -453,7 +453,7 @@
             this.Font = new System.Drawing.Font("新細明體", 11F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FmRobotPath";
-            this.Text = "RobotPathGetter(V1.0.1)";
+            this.Text = "RobotPathGetter(V1.0.2)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FmRobotPath_Load);
             this.groupBox1.ResumeLayout(false);
