@@ -77,17 +77,17 @@
       },
       {
         "SerialNumber": 100,
-        "PositionFileName": "",
-        "UsageDescription": "從Load Port的Home點移到夾爪校正裝置(校正裝置名稱未定)",
+        "PositionFileName": "ICHomeToDeformInsp.json",
+        "UsageDescription": "從Inspection Chamber的Home點移到夾爪校正裝置(校正裝置名稱未定)",
         "PositionFileDescription": "多點位路徑集合",
-        "MotionType": 2
+        "MotionType": 3
       },
       {
         "SerialNumber": 110,
-        "PositionFileName": "",
-        "UsageDescription": "從夾爪校正裝置移到Load Port的Home點(校正裝置名稱未定)",
+        "PositionFileName": "DeformInspToICHome.json",
+        "UsageDescription": "從夾爪校正裝置移到Inspection Chamber的Home點(校正裝置名稱未定)",
         "PositionFileDescription": "多點位路徑集合",
-        "MotionType": 2
+        "MotionType": 3
       },
       {
         "SerialNumber": 120,
@@ -119,29 +119,85 @@
       },
       {
         "SerialNumber": 160,
-        "PositionFileName": "CCHomeFrontSideToClean.json",
-        "UsageDescription": "從Clean Chamber的Home點，夾爪不旋轉(Mask正面朝上)，移到Air Gun上方清潔Mask背面，最後回到Clean Chamber的Home點",
+        "PositionFileName": "CCHomeFrontSideToCC.json",
+        "UsageDescription": "從Clean Chamber的Home點，夾爪不旋轉(Mask正面朝上)，移到Clean Chamber內",
         "PositionFileDescription": "多點位路徑集合",
         "MotionType": 2
       },
       {
         "SerialNumber": 170,
-        "PositionFileName": "CCHomeFrontSideToCamera.json",
-        "UsageDescription": "從Clean Chamber的Home點，夾爪不旋轉(Mask正面朝上)，移到Camera上方拍攝Mask背面影像，最後回到Clean Chamber的Home點",
+        "PositionFileName": "CCFrontSideToCCHome.json",
+        "UsageDescription": "從Clean Chamber內，夾爪不旋轉(Mask正面朝上)，移到Clean Chamber的Home點",
         "PositionFileDescription": "多點位路徑集合",
         "MotionType": 2
       },
       {
         "SerialNumber": 180,
-        "PositionFileName": "CCHomeBackSideToClean.json",
-        "UsageDescription": "從Clean Chamber的Home點，夾爪旋轉180º(Mask背面朝上)，移到Air Gun上方清潔Mask正面，最後回到Clean Chamber的Home點",
+        "PositionFileName": "CCFrontSideToClean.json",
+        "UsageDescription": "從Clean Chamber內(Mask正面朝上)，移到Air Gun上方清潔Mask背面",
         "PositionFileDescription": "多點位路徑集合",
         "MotionType": 2
       },
       {
         "SerialNumber": 190,
-        "PositionFileName": "CCHomeBackSideToCamera.json",
-        "UsageDescription": "從Clean Chamber的Home點，夾爪旋轉180º(Mask背面朝上)，移到Camera上方拍攝Mask正面影像，最後回到Clean Chamber的Home點",
+        "PositionFileName": "FrontSideCleanFinishToCC.json",
+        "UsageDescription": "從Air Gun上方清潔Mask背面完成後(Mask正面朝上)，移到Clean Chamber內",
+        "PositionFileDescription": "多點位路徑集合",
+        "MotionType": 2
+      },
+      {
+        "SerialNumber": 200,
+        "PositionFileName": "CCFrontSideToCapture.json",
+        "UsageDescription": "從Clean Chamber內(Mask正面朝上)，移到Camera上方拍攝Mask背面影像",
+        "PositionFileDescription": "多點位路徑集合",
+        "MotionType": 2
+      },
+      {
+        "SerialNumber": 210,
+        "PositionFileName": "FrontSideCaptureFinishToCC.json",
+        "UsageDescription": "從Camera上方拍攝Mask背面影像完成後(Mask正面朝上)，移到Clean Chamber內",
+        "PositionFileDescription": "多點位路徑集合",
+        "MotionType": 2
+      },
+      {
+        "SerialNumber": 220,
+        "PositionFileName": "CCHomeBackSideToCC.json",
+        "UsageDescription": "從Clean Chamber的Home點，夾爪旋轉180∘(Mask背面朝上)，移到Clean Chamber內",
+        "PositionFileDescription": "多點位路徑集合",
+        "MotionType": 2
+      },
+      {
+        "SerialNumber": 230,
+        "PositionFileName": "CCBackSideToCCHome.json",
+        "UsageDescription": "從Clean Chamber內(Mask背面朝上)移出Clean Chamber，夾爪旋轉180∘(Mask正面朝上)，移到Clean Chamber的Home點",
+        "PositionFileDescription": "多點位路徑集合",
+        "MotionType": 2
+      },
+      {
+        "SerialNumber": 240,
+        "PositionFileName": "CCBackSideToClean.json",
+        "UsageDescription": "從Clean Chamber內(Mask背面朝上)，移到Air Gun上方清潔Mask背面",
+        "PositionFileDescription": "多點位路徑集合",
+        "MotionType": 2
+      },
+      {
+        "SerialNumber": 250,
+        "PositionFileName": "BackSideCleanFinishToCC.json",
+        "UsageDescription": "從Air Gun上方清潔Mask正面完成後(Mask背面朝上)，移到Clean Chamber內",
+        "PositionFileDescription": "多點位路徑集合",
+        "MotionType": 2
+      },
+      {
+        "SerialNumber": 260,
+        "PositionFileName": "CCBackSideToCapture.json",
+        "UsageDescription": "從Clean Chamber內(Mask背面朝上)，移到Camera上方拍攝Mask正面影像",
+        "PositionFileDescription": "多點位路徑集合",
+        "MotionType": 2
+      },
+      {
+        "SerialNumber": 270,
+        "PositionFileName": "BackSideCaptureFinishToCC.json",
+        "UsageDescription": "從Camera上方拍攝Mask正面影像完成後(Mask背面朝上)，移到Clean Chamber內",
         "PositionFileDescription": "多點位路徑集合",
         "MotionType": 2
       }
@@ -1158,43 +1214,57 @@
       },
       {
         "SerialNumber": 1430,
-        "PositionFileName": "Cabinet1_Home_Forward_OpenStage_GET.json",
-        "UsageDescription": "從Cabinet1_Home 點前進到 Open Stage(GET) 各點的集合",
+        "PositionFileName": "Cabinet_01_Home_Forward_OpenStage_GET.json",
+        "UsageDescription": "從Cabinet 01 Home 點前進到 Open Stage(GET) 各點的集合",
         "PositionFileDescription": "多點位路徑集合",
         "MotionType": 2
       },
       {
         "SerialNumber": 1440,
-        "PositionFileName": "Cabinet1_Home_Forward_OpenStage_PUT.json",
-        "UsageDescription": "從Cabinet1_Home點前進到 Open Stage(PUT) 各點的集合",
+        "PositionFileName": "Cabinet_01_Home_Forward_OpenStage_PUT.json",
+        "UsageDescription": "從Cabinet 01 Home點前進到 Open Stage(PUT) 各點的集合",
         "PositionFileDescription": "多點位路徑集合",
         "MotionType": 2
       },
       {
         "SerialNumber": 1450,
-        "PositionFileName": "OpenStage_Backward_Cabinet1_Home_GET.json",
-        "UsageDescription": "從Open Stage 點回到 Cabinet1_Home(GET) 各點的集合",
+        "PositionFileName": "OpenStage_Backward_Cabinet_01_Home_GET.json",
+        "UsageDescription": "從Open Stage 點回到 Cabinet 01 Home(GET) 各點的集合",
         "PositionFileDescription": "多點位路徑集合",
         "MotionType": 2
       },
       {
         "SerialNumber": 1460,
-        "PositionFileName": "OpenStage_Backward_Cabinet1_Home_PUT.json",
-        "UsageDescription": "從Open Stage 點回到 Cabinet1_Home(PUT) 各點的集合",
+        "PositionFileName": "OpenStage_Backward_Cabinet_01_Home_PUT.json",
+        "UsageDescription": "從Open Stage 點回到 Cabinet 01 Home(PUT) 各點的集合",
         "PositionFileDescription": "多點位路徑集合",
         "MotionType": 2
       },
       {
         "SerialNumber": 1470,
-        "PositionFileName": "LockBox.json",
-        "UsageDescription": "LockBox各點的集合",
+        "PositionFileName": "LockCrystalBox.json",
+        "UsageDescription": "LockCrystalBox(水晶盒)各點的集合",
         "PositionFileDescription": "多點位路徑集合",
         "MotionType": 2
       },
       {
         "SerialNumber": 1480,
-        "PositionFileName": "UnlockBox.json",
-        "UsageDescription": "UnlockBox 各點的集合",
+        "PositionFileName": "UnlockCrystalBox.json",
+        "UsageDescription": "UnlockCrystalBox(水晶盒) 各點的集合",
+        "PositionFileDescription": "多點位路徑集合",
+        "MotionType": 2
+      },
+	  {
+        "SerialNumber": 1490,
+        "PositionFileName": "LockIronBox.json",
+        "UsageDescription": "LockIronBox(鐵盒)各點的集合",
+        "PositionFileDescription": "多點位路徑集合",
+        "MotionType": 2
+      },
+      {
+        "SerialNumber": 1500,
+        "PositionFileName": "UnlockIronBox.json",
+        "UsageDescription": "UnlockIronBox(鐵盒)各點的集合",
         "PositionFileDescription": "多點位路徑集合",
         "MotionType": 2
       }
