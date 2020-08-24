@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using MvAssistant.Mac.v1_0.JSon;
+using MvAssistantMacVerifyEqp;
 
 namespace MaskCleanerVerify
 {
@@ -792,6 +793,7 @@ namespace MaskCleanerVerify
         private void LstBxJsonList_SelectedIndexChanged(object sender, EventArgs e)
         {
             TxtBxDevicePath.Text = "";
+            btnModifySpeed.Enabled = false;
             try
             {
                 var serialNumber = GetPositionFileSerialNumber();
@@ -864,7 +866,6 @@ namespace MaskCleanerVerify
                 NumUdpSn.Value = this.GetPositionInstancesNextSn();
             }
         }
-
        
 
         private void LstBxGetPosition_SelectedIndexChanged(object sender, EventArgs e)
@@ -899,6 +900,53 @@ namespace MaskCleanerVerify
             SetOperateAreaEnaledProperty(false);
         }
 
-        
+        private void LstBxPositionInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LstBxPositionInfo.SelectedIndex!= -1)
+            {
+                btnModifySpeed.Enabled = true;
+            }
+          
+        }
+
+        private void btnModifySpeed_Click(object sender, EventArgs e)
+        {
+            if (LstBxPositionInfo.SelectedIndex != -1)
+            {
+                var text = LstBxPositionInfo.SelectedItem.ToString();
+                var sn = Convert.ToInt32(text.Split('|')[0]);
+                var position = this.PositionInstances.Where(m => m.Sn == sn).FirstOrDefault();
+
+                var f=  new FrmRobotPath_ModifySpeed(this,position);
+                f.Show(this);
+            }
+            else
+            {
+                MessageBox.Show("請選定要調整速度的點位資料");
+            }
+        }
+
+        private void LstBxPositionInfo_ValueMemberChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void ToModifySpeed(PositionInfo position)
+        {
+            RefreshPositionInfoList();
+            SelectLstBxPositionInfo(position);
+        }
+
+        public void SelectLstBxPositionInfo(PositionInfo position)
+        {
+           for(var i=0; i< LstBxPositionInfo.Items.Count;i++)
+            {
+                var item = LstBxPositionInfo.Items[i];
+                if (Convert.ToInt32(item.ToString().Split('|')[0]) == position.Sn)
+                {
+                    LstBxPositionInfo.SelectedIndex = i;
+                }
+            }
+        }
     }
 }

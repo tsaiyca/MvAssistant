@@ -58,6 +58,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnResetSN = new System.Windows.Forms.Button();
             this.BtnResetSN_10 = new System.Windows.Forms.Button();
+            this.btnModifySpeed = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumUdpSpeed)).BeginInit();
@@ -77,12 +78,14 @@
             this.LstBxPositionInfo.Margin = new System.Windows.Forms.Padding(4);
             this.LstBxPositionInfo.Name = "LstBxPositionInfo";
             this.LstBxPositionInfo.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.LstBxPositionInfo.Size = new System.Drawing.Size(1662, 394);
+            this.LstBxPositionInfo.Size = new System.Drawing.Size(1662, 424);
             this.LstBxPositionInfo.TabIndex = 0;
+            this.LstBxPositionInfo.SelectedIndexChanged += new System.EventHandler(this.LstBxPositionInfo_SelectedIndexChanged);
+            this.LstBxPositionInfo.ValueMemberChanged += new System.EventHandler(this.LstBxPositionInfo_ValueMemberChanged);
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(4, 150);
+            this.BtnAdd.Location = new System.Drawing.Point(4, 191);
             this.BtnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(131, 42);
@@ -93,7 +96,7 @@
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(4, 195);
+            this.BtnDelete.Location = new System.Drawing.Point(4, 236);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(131, 42);
@@ -104,7 +107,7 @@
             // 
             // BtnSave
             // 
-            this.BtnSave.Location = new System.Drawing.Point(4, 286);
+            this.BtnSave.Location = new System.Drawing.Point(4, 327);
             this.BtnSave.Margin = new System.Windows.Forms.Padding(4);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(131, 42);
@@ -115,7 +118,7 @@
             // 
             // BtnLoad
             // 
-            this.BtnLoad.Location = new System.Drawing.Point(4, 104);
+            this.BtnLoad.Location = new System.Drawing.Point(4, 145);
             this.BtnLoad.Margin = new System.Windows.Forms.Padding(4);
             this.BtnLoad.Name = "BtnLoad";
             this.BtnLoad.Size = new System.Drawing.Size(131, 42);
@@ -186,7 +189,7 @@
             this.BtnAddGet.Location = new System.Drawing.Point(785, 481);
             this.BtnAddGet.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAddGet.Name = "BtnAddGet";
-            this.BtnAddGet.Size = new System.Drawing.Size(65, 68);
+            this.BtnAddGet.Size = new System.Drawing.Size(65, 42);
             this.BtnAddGet.TabIndex = 13;
             this.BtnAddGet.Text = "↓";
             this.BtnAddGet.UseVisualStyleBackColor = true;
@@ -194,7 +197,7 @@
             // 
             // BtnDeleteAll
             // 
-            this.BtnDeleteAll.Location = new System.Drawing.Point(4, 241);
+            this.BtnDeleteAll.Location = new System.Drawing.Point(4, 282);
             this.BtnDeleteAll.Margin = new System.Windows.Forms.Padding(4);
             this.BtnDeleteAll.Name = "BtnDeleteAll";
             this.BtnDeleteAll.Size = new System.Drawing.Size(131, 42);
@@ -330,7 +333,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(1676, 25);
+            this.label6.Location = new System.Drawing.Point(1676, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 22);
             this.label6.TabIndex = 22;
@@ -339,7 +342,7 @@
             // 
             // NumUdpSn
             // 
-            this.NumUdpSn.Location = new System.Drawing.Point(1677, 52);
+            this.NumUdpSn.Location = new System.Drawing.Point(1677, 41);
             this.NumUdpSn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumUdpSn.Maximum = new decimal(new int[] {
             99999,
@@ -380,16 +383,17 @@
             this.groupBox5.Controls.Add(this.NumUdpSn);
             this.groupBox5.Controls.Add(this.LstBxPositionInfo);
             this.groupBox5.Enabled = false;
-            this.groupBox5.Location = new System.Drawing.Point(12, 555);
+            this.groupBox5.Location = new System.Drawing.Point(12, 524);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox5.Size = new System.Drawing.Size(1836, 432);
+            this.groupBox5.Size = new System.Drawing.Size(1836, 463);
             this.groupBox5.TabIndex = 26;
             this.groupBox5.TabStop = false;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnModifySpeed);
             this.panel1.Controls.Add(this.BtnResetSN_10);
             this.panel1.Controls.Add(this.BtnResetSN);
             this.panel1.Controls.Add(this.BtnLoad);
@@ -397,15 +401,15 @@
             this.panel1.Controls.Add(this.BtnDeleteAll);
             this.panel1.Controls.Add(this.BtnAdd);
             this.panel1.Controls.Add(this.BtnDelete);
-            this.panel1.Location = new System.Drawing.Point(1674, 84);
+            this.panel1.Location = new System.Drawing.Point(1674, 70);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(147, 335);
+            this.panel1.Size = new System.Drawing.Size(147, 389);
             this.panel1.TabIndex = 15;
             // 
             // BtnResetSN
             // 
-            this.BtnResetSN.Location = new System.Drawing.Point(4, 12);
+            this.BtnResetSN.Location = new System.Drawing.Point(4, 5);
             this.BtnResetSN.Margin = new System.Windows.Forms.Padding(4);
             this.BtnResetSN.Name = "BtnResetSN";
             this.BtnResetSN.Size = new System.Drawing.Size(131, 42);
@@ -416,7 +420,7 @@
             // 
             // BtnResetSN_10
             // 
-            this.BtnResetSN_10.Location = new System.Drawing.Point(3, 58);
+            this.BtnResetSN_10.Location = new System.Drawing.Point(3, 50);
             this.BtnResetSN_10.Margin = new System.Windows.Forms.Padding(4);
             this.BtnResetSN_10.Name = "BtnResetSN_10";
             this.BtnResetSN_10.Size = new System.Drawing.Size(131, 42);
@@ -424,6 +428,18 @@
             this.BtnResetSN_10.Text = "Arrange SN(10)";
             this.BtnResetSN_10.UseVisualStyleBackColor = true;
             this.BtnResetSN_10.Click += new System.EventHandler(this.BtnResetSN_10_Click);
+            // 
+            // btnModifySpeed
+            // 
+            this.btnModifySpeed.Enabled = false;
+            this.btnModifySpeed.Location = new System.Drawing.Point(3, 98);
+            this.btnModifySpeed.Margin = new System.Windows.Forms.Padding(4);
+            this.btnModifySpeed.Name = "btnModifySpeed";
+            this.btnModifySpeed.Size = new System.Drawing.Size(131, 42);
+            this.btnModifySpeed.TabIndex = 29;
+            this.btnModifySpeed.Text = "Modify Speed";
+            this.btnModifySpeed.UseVisualStyleBackColor = true;
+            this.btnModifySpeed.Click += new System.EventHandler(this.btnModifySpeed_Click);
             // 
             // FmRobotPath
             // 
@@ -484,5 +500,6 @@
         private System.Windows.Forms.Button BtnResetSN;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button BtnResetSN_10;
+        private System.Windows.Forms.Button btnModifySpeed;
     }
 }
