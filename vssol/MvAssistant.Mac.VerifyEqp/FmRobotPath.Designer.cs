@@ -57,6 +57,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnResetSN = new System.Windows.Forms.Button();
+            this.BtnResetSN_10 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumUdpSpeed)).BeginInit();
@@ -76,12 +77,12 @@
             this.LstBxPositionInfo.Margin = new System.Windows.Forms.Padding(4);
             this.LstBxPositionInfo.Name = "LstBxPositionInfo";
             this.LstBxPositionInfo.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.LstBxPositionInfo.Size = new System.Drawing.Size(1662, 334);
+            this.LstBxPositionInfo.Size = new System.Drawing.Size(1662, 394);
             this.LstBxPositionInfo.TabIndex = 0;
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(4, 97);
+            this.BtnAdd.Location = new System.Drawing.Point(4, 150);
             this.BtnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(131, 42);
@@ -92,7 +93,7 @@
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(4, 142);
+            this.BtnDelete.Location = new System.Drawing.Point(4, 195);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(131, 42);
@@ -103,7 +104,7 @@
             // 
             // BtnSave
             // 
-            this.BtnSave.Location = new System.Drawing.Point(4, 233);
+            this.BtnSave.Location = new System.Drawing.Point(4, 286);
             this.BtnSave.Margin = new System.Windows.Forms.Padding(4);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(131, 42);
@@ -114,7 +115,7 @@
             // 
             // BtnLoad
             // 
-            this.BtnLoad.Location = new System.Drawing.Point(4, 51);
+            this.BtnLoad.Location = new System.Drawing.Point(4, 104);
             this.BtnLoad.Margin = new System.Windows.Forms.Padding(4);
             this.BtnLoad.Name = "BtnLoad";
             this.BtnLoad.Size = new System.Drawing.Size(131, 42);
@@ -193,7 +194,7 @@
             // 
             // BtnDeleteAll
             // 
-            this.BtnDeleteAll.Location = new System.Drawing.Point(4, 188);
+            this.BtnDeleteAll.Location = new System.Drawing.Point(4, 241);
             this.BtnDeleteAll.Margin = new System.Windows.Forms.Padding(4);
             this.BtnDeleteAll.Name = "BtnDeleteAll";
             this.BtnDeleteAll.Size = new System.Drawing.Size(131, 42);
@@ -383,12 +384,13 @@
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox5.Size = new System.Drawing.Size(1836, 378);
+            this.groupBox5.Size = new System.Drawing.Size(1836, 432);
             this.groupBox5.TabIndex = 26;
             this.groupBox5.TabStop = false;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BtnResetSN_10);
             this.panel1.Controls.Add(this.BtnResetSN);
             this.panel1.Controls.Add(this.BtnLoad);
             this.panel1.Controls.Add(this.BtnSave);
@@ -398,12 +400,12 @@
             this.panel1.Location = new System.Drawing.Point(1674, 84);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(147, 281);
+            this.panel1.Size = new System.Drawing.Size(147, 335);
             this.panel1.TabIndex = 15;
             // 
             // BtnResetSN
             // 
-            this.BtnResetSN.Location = new System.Drawing.Point(4, 6);
+            this.BtnResetSN.Location = new System.Drawing.Point(4, 12);
             this.BtnResetSN.Margin = new System.Windows.Forms.Padding(4);
             this.BtnResetSN.Name = "BtnResetSN";
             this.BtnResetSN.Size = new System.Drawing.Size(131, 42);
@@ -411,6 +413,17 @@
             this.BtnResetSN.Text = "Arrange SN";
             this.BtnResetSN.UseVisualStyleBackColor = true;
             this.BtnResetSN.Click += new System.EventHandler(this.BtnResetSN_Click);
+            // 
+            // BtnResetSN_10
+            // 
+            this.BtnResetSN_10.Location = new System.Drawing.Point(3, 58);
+            this.BtnResetSN_10.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnResetSN_10.Name = "BtnResetSN_10";
+            this.BtnResetSN_10.Size = new System.Drawing.Size(131, 42);
+            this.BtnResetSN_10.TabIndex = 28;
+            this.BtnResetSN_10.Text = "Arrange SN(10)";
+            this.BtnResetSN_10.UseVisualStyleBackColor = true;
+            this.BtnResetSN_10.Click += new System.EventHandler(this.BtnResetSN_10_Click);
             // 
             // FmRobotPath
             // 
@@ -470,5 +483,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button BtnResetSN;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button BtnResetSN_10;
     }
 }

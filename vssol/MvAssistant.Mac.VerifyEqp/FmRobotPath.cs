@@ -830,6 +830,9 @@ namespace MaskCleanerVerify
 
         private void BtnResetSN_Click(object sender, EventArgs e)
         {
+
+            ResetSN(1, 1);
+            /**
             if (this.PositionInstances != null && this.PositionInstances.Any())
             {
                 this.PositionInstances = this.PositionInstances.OrderBy(m => m.Sn).ToList();
@@ -840,8 +843,29 @@ namespace MaskCleanerVerify
                 }
                 RefreshPositionInfoList();
                 NumUdpSn.Value = this.GetPositionInstancesNextSn();
+            }*/
+        }
+        private void BtnResetSN_10_Click(object sender, EventArgs e)
+        {
+            ResetSN(10, 10);
+        }
+        public void ResetSN(int start, int diff)
+        {
+            if (this.PositionInstances != null && this.PositionInstances.Any())
+            {
+                this.PositionInstances = this.PositionInstances.OrderBy(m => m.Sn).ToList();
+                int sn = start;
+                foreach (var position in PositionInstances)
+                {
+                    position.Sn = sn;
+                    sn += diff;
+                }
+                RefreshPositionInfoList();
+                NumUdpSn.Value = this.GetPositionInstancesNextSn();
             }
         }
+
+       
 
         private void LstBxGetPosition_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -874,5 +898,7 @@ namespace MaskCleanerVerify
         {
             SetOperateAreaEnaledProperty(false);
         }
+
+        
     }
 }
